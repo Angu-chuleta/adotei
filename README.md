@@ -26,3 +26,5 @@ O projeto é dividido em duas partes:
 Ambos os projetos necessitam apenas da runtime [NodeJS](http://nodejs.org/) na versão 14 ou superior (é recomendado a versão LTS).
 Abra a pasta do projeto api ou web e execute no terminal: `$npm install` e aguarde a instalação das dependências.
 Após a instalação basta iniciar a api primeiramente e depois o front-end web, ambos com o comando: `$npm start`.
+
+Obs: Para contribuir com desenvolvimento também é necessário executar `$npm install` na pasta raiz do repositório para os linters de commit serem instalados.
