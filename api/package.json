@@ -1,0 +1,56 @@
+{
+  "name": "adotei-api",
+  "version": "0.0.0",
+  "description": "Rest API for Adotei application",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint -c .eslintrc.json src/**/*.ts",
+    "prebuild": "rimraf dist",
+    "build": "babel src --extensions \".js,.ts,.json\" --out-dir dist --copy-files --no-copy-ignored",
+    "watch": "babel src --watch --extensions \".js,.ts,.json\" --out-dir dist --copy-files --no-copy-ignored",
+    "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only src/index.ts",
+    "prestart": "npm run build",
+    "start": "node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angu-chuleta/adotei.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/angu-chuleta/adotei/issues"
+  },
+  "homepage": "https://github.com/angu-chuleta/adotei#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.2.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-typescript": "^7.12.1",
+    "@types/cors": "^2.8.8",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.9",
+    "@types/helmet": "^4.0.0",
+    "@types/node": "^14.14.7",
+    "@typescript-eslint/eslint-plugin": "^4.7.0",
+    "@typescript-eslint/parser": "^4.7.0",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb-typescript": "^12.0.0",
+    "eslint-plugin-import": "^2.22.1",
+    "ts-node-dev": "^1.0.0",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^4.0.5"
+  },
+  "engines": {
+    "node": "^14.15.0",
+    "npm": "^6.14.8"
+  }
+}
