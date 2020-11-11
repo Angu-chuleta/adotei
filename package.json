@@ -23,6 +23,9 @@
   "lint-staged": {
     "api/src/**/*.ts": [
       "./api/node_modules/.bin/eslint -c ./api/.eslintrc.json --fix "
+    ],
+    "web/src/**/*.{js,jsx}": [
+      "./web/node_modules/.bin/eslint -c ./web/.eslintrc.json --fix "
     ]
   },
   "husky": {
