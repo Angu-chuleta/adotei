@@ -2,6 +2,7 @@ import express, { Express } from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
 import routes from '@routes';
+import { connectDb } from './config';
 
 export default class RestApi {
   private app: Express;
@@ -22,6 +23,7 @@ export default class RestApi {
   }
 
   private configureGlobalHandlers(): void {
+    connectDb();
     this.app.use('/', express.static('/public'));
     this.app.use('/docs', express.static('/docs'));
     this.app.use(helmet());
