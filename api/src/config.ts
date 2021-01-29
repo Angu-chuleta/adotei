@@ -6,6 +6,7 @@ config();
 const {
   MONGODB_USER: dbUser,
   MONGODB_PASS: dbPass,
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   PORT: _PORT,
   NODE_ENV,
   JWT,
@@ -13,10 +14,11 @@ const {
 
 const isTesting = NODE_ENV === 'test';
 const dbName = isTesting ? 'test' : 'adoteitest';
+const dbUrl = process.env.MONGODB_URL || 'cluster0.lkvk4.mongodb.net';
 
 const connectDb = () => {
   mongoose.connect(
-    `mongodb+srv://${dbUser}:${dbPass}@cluster0-ilwwj.gcp.mongodb.net/${dbName}?retryWrites=true&w=majority`,
+    `mongodb+srv://${dbUser}:${dbPass}@${dbUrl}/${dbName}?retryWrites=true&w=majority`,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -31,4 +33,9 @@ const authConfig = {
   jwtSecret: JWT || 's3cr370',
 };
 
-export { connectDb, PORT, NODE_ENV, authConfig };
+export {
+  connectDb,
+  PORT,
+  NODE_ENV,
+  authConfig,
+};

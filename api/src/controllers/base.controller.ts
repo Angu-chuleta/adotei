@@ -9,7 +9,7 @@ export interface IControllerModelKeys<T> {
 
 export abstract class BaseController<
   A extends IBaseModel,
-  S extends BaseService<A>
+  S extends BaseService<A>,
 > {
   constructor(protected service: S, protected keys: IControllerModelKeys<A>) {}
 
@@ -34,9 +34,10 @@ export abstract class BaseController<
       res.status(400).json(error);
     }
   };
+
   update = async (req: Request, res: Response) => {
     try {
-      const id = req.params.id;
+      const { id } = req.params;
       const model = this.keys.update.reduce(
         (obj, key) => ({ ...obj, ...{ [key]: req.body[key] } }),
         {} as A,
@@ -47,18 +48,20 @@ export abstract class BaseController<
       res.status(400).json(error);
     }
   };
+
   getOne = async (req: Request, res: Response) => {
     try {
-      const id = req.params.id;
+      const { id } = req.params;
       const reg = await this.service.getById(id);
       res.json(reg);
     } catch (error) {
       res.status(400).json(error);
     }
   };
+
   delete = async (req: Request, res: Response) => {
     try {
-      const id = req.params.id;
+      const { id } = req.params;
       const reg = await this.service.delete(id);
       res.json(reg);
     } catch (error) {

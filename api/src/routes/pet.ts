@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { petController } from '../controllers';
 
 const routes = Router();
-const admin = 2;
+
 /**
  * @swagger
  *
