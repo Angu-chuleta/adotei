@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./login.css";
 import { Link, useHistory } from "react-router-dom";
 import { FiLogIn } from "react-icons/fi";
+import apiSevice from "../../services/api.service";
 
 export default function Login() {
   const history = useHistory();
@@ -11,11 +12,51 @@ export default function Login() {
   const [FildErro, setFildErro] = useState(false);
   const [UserPass, setUserPass] = useState(false);
 
+  useEffect(() => {
+    let store = JSON.parse(localStorage.getItem("adotei@token"));
+    if (store !== null) {
+      history.push("/adocao");
+    }
+  }, [history]);
+
+  async function handleLogin(e) {
+    e.preventDefault();
+    setUserPass(false);
+    setFildErro(false);
+    if (username !== "" || password !== "") {
+      setload(true);
+
+      apiSevice
+        .post("/auth/login", {
+          username,
+          password,
+        })
+        .then((response) => {
+          localStorage.clear();
+          localStorage.setItem("adotei@token", JSON.stringify(response.data));
+          localStorage.setItem(
+            "adotei@perfil",
+            JSON.stringify(response.data.user)
+          );
+          history.push("/");
+          setload(false);
+        })
+        .catch((err) => {
+          setload(false);
+          console.log(err);
+          setUserPass(true);
+          //alert("Erro ao logar: verifique seu login e senha!");
+        });
+    } else {
+      setFildErro(true);
+    }
+  }
+
   return (
     <div className="row">
       <div className="login-container col s12 m8 offset-m2 l6 offset-l3 xl4 offset-xl4">
         <section className="form col s8 offset-s2">
-          <form onSubmit={()=>{}}>
+          <form onSubmit={handleLogin}>
             <h1 id="adotei">Adotei</h1>
 
             <h3 id="bemvindo">Bem vindo!</h3>
@@ -53,9 +94,7 @@ export default function Login() {
               </div>
             )}
 
-            <Link className="row" to="/">
-              {/* <Link className="fa fa-facebook" to="/adocao"></Link>
-            <Link className="fa fa-google" to="/adocao"></Link> */}
+            <Link className="row" to="/registro">
               <div className="col s12">
                 <FiLogIn size={16} color="#3b5998" />
                 <span id="cadastro">Cadastrar</span>

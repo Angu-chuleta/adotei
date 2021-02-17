@@ -1,6 +1,7 @@
 import "./home.css";
 import apiService from "../../services/api.service";
 import React, { useState, useEffect } from "react";
+import Cabecalho from "../cabecalho/cabecalho";
 
 export default function Home() {
   const [pets, setPets] = useState([]);
@@ -23,6 +24,7 @@ export default function Home() {
 
   return (
     <div>
+      <Cabecalho />
       {load ? (
         <div className="progress">
           <div className="indeterminate"></div>

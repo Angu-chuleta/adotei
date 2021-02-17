@@ -2,7 +2,7 @@
   "name": "adotei-web",
   "version": "0.0.0",
   "private": true,
-  "homepage": "http://angu-chuleta.github.io/adotei",
+  "homepage": "http://icarodgl.github.io/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -12,6 +12,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-icons": "^4.1.0",
+    "react-images-uploading": "^3.1.2",
     "react-materialize": "^3.9.6",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
