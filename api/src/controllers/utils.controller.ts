@@ -5,3 +5,5 @@ export default class UtilsController {
     res.json({ message: 'Pong' });
   };
 }
+
+export const utilsController = new UtilsController();
