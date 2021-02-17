@@ -2,7 +2,7 @@ import axios from "axios";
 
 const apiService = () => {
   const axiosInstance = axios.create({
-    baseURL: "localhost:8080",
+    baseURL: "https://adotei-back.herokuapp.com/",
   });
   axiosInstance.interceptors.request.use(
     (config) => {
