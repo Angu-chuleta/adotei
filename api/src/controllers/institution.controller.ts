@@ -18,6 +18,7 @@ class InstitutionController extends BaseController<IInstitutionModel, Institutio
         'pets',
         'uf',
         'cidade',
+        'bank_information',
       ],
       // keys do req.body que serão usados no update
       update: [
@@ -33,6 +34,7 @@ class InstitutionController extends BaseController<IInstitutionModel, Institutio
 
         'uf',
         'cidade',
+        'bank_information',
       ],
     });
   }

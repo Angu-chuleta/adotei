@@ -13,6 +13,9 @@ export interface IInstitutionModel extends Document {
   pets: Array<IPetModel>;
   uf: string;
   cidade: string;
+  bank_information: {
+    pix_key: string;
+  };
 }
 
 const InstitutionSchema = new Schema<IInstitutionModel>({
@@ -59,6 +62,11 @@ const InstitutionSchema = new Schema<IInstitutionModel>({
   cidade: {
     type: String,
     required: true,
+  },
+  bank_information: {
+    pix_key: {
+      type: String,
+    },
   },
 });
 
