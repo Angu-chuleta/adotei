@@ -1,11 +1,13 @@
-import { utilsController } from './utils.controller';
-import { petController } from './pet.controller';
+import { authController } from './auth.controller';
 import { institutionController } from './institution.controller';
+import { petController } from './pet.controller';
 import { userController } from './user.controller';
+import { utilsController } from './utils.controller';
 
 export {
-  utilsController,
-  petController,
+  authController,
   institutionController,
+  petController,
   userController,
+  utilsController,
 };
