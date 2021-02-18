@@ -13,8 +13,7 @@ const getRole = async (res: Response, next: NextFunction, role: number) => {
 };
 
 const checkRole = (role: number) => async (_: Request, res: Response, next: NextFunction) => {
-  const result = await getRole(res, next, role);
-  return result;
+  await getRole(res, next, role);
 };
 
 export { checkRole };
