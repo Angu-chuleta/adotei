@@ -82,23 +82,12 @@ export default function ProfileUser() {
                         <td>{perfil.email}</td>
                       </tr>
                       <tr>
-                        <td>telefone:</td>
+                        <td>Pix:</td>
                         <td>{perfil.telefone}</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
-              </div>
-              <div className="conta col s2">
-                <div id="saldo">
-                  Saldo: <FaHandHoldingHeart /> {perfil.credito}
-                </div>
-                <button
-                  onClick={addCredito}
-                  className="waves-effect waves-light btn"
-                >
-                  Adicionar fundos
-                </button>
               </div>
             </div>
           </div>

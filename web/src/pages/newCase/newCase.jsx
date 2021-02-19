@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./newCase.css";
 import Cabecalho from "../cabecalho/cabecalho";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import apiService from "../../services/api.service";
 import ImageUploading from "react-images-uploading";
 
@@ -14,7 +14,7 @@ export default function NewCase() {
   const [formErro, setFormErro] = useState(false);
   const maxNumber = 1;
   const [imagesvalida, setImagesvalida] = React.useState(true);
-  //const history = useHistory();
+  const history = useHistory();
   const [name, setName] = useState("");
   const [foto, setFoto] = useState("");
   const [idade, setIdade] = useState("");
@@ -55,7 +55,7 @@ export default function NewCase() {
   }, []);
 
   function radioChange(e) {
-    setOngSelected(e.target.value);
+    setOngSelected("aaa");
   }
 
   function radioPorte(e) {
@@ -70,7 +70,7 @@ export default function NewCase() {
       sobre,
       idade,
       foiAdotado,
-      institution: ongSelected,
+      institution: "5f7ce18cc254640017e3f0e7",
     };
     setFormErro(false);
     console.log(data);
@@ -78,8 +78,8 @@ export default function NewCase() {
     apiService
       .post("pet", data)
       .then((response) => {
-        // console.log(`Cadastro realizado com sucesso`, response.data);
-        // history.push("/profileong");
+        console.log(`Cadastro realizado com sucesso`, response.data);
+        history.push("/admin");
         setLoadbtn(false);
       })
       .catch((error) => {
@@ -95,7 +95,7 @@ export default function NewCase() {
       <div>
         <div className="newcase col s12 m8 offset-m2 l6 offset-l3 xl4 offset-xl4">
           <section>
-            <h4>Novo Animal</h4>
+            <center><h4>Novo Animal</h4></center>
           </section>
           <form className="col s12 m8 offset-m2 l10 offset-l1">
             <input
@@ -218,21 +218,7 @@ export default function NewCase() {
                 <div className="indeterminate"></div>
               </div>
             ) : (
-              <div>
-                {ong.map((o) => (
-                  <p key={o._id}>
-                    <label>
-                      <input
-                        value={o._id}
-                        onChange={radioChange}
-                        name="ong"
-                        type="radio"
-                      />
-                      <span>{o.name}</span>
-                    </label>
-                  </p>
-                ))}
-              </div>
+              <div></div>
             )}
             {!formErro ? (
               <span></span>
