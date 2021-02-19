@@ -13,7 +13,9 @@ export default function RegisterUser() {
   const [telefone, setTelefone] = useState("");
   const [username, setUsename] = useState("");
   const [password, setPassword] = useState("");
- // const [pix, setPix] = useState("");
+  const [pix, setPix] = useState("");
+  const [uf, setUf] = useState("");
+  const [cidade, setCidade] = useState("");
   const [load, setLoad] = useState(false);
   const [formValido, setformValido] = useState(true);
   const [images, setImages] = React.useState([]);
@@ -45,23 +47,25 @@ export default function RegisterUser() {
     const credito = 0;
     setLoad(true);
     const data = {
-      username,
-      password,
-      role,
       user: {
+        username,
+        password,
         name,
         foto,
         email,
         telefone,
         sobre,
-        credito,
-        //pix,
+        uf,
+        cidade,
+        bank_information: {
+          pix_key:pix
+        }
       },
     };
     setformValido(true);
     setUsernameErro(false);
     apiService
-      .post("auth/new", data)
+      .post("user", data)
       .then((response) => {
         console.log("Cadastro realizado com sucesso", response.status);
         history.push("/");
@@ -116,18 +120,21 @@ export default function RegisterUser() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+            <input
+            placeholder="Cidade"
+            value={cidade}
+            onChange={(e) => setCidade(e.target.value)}
+          />
+            <input
+            placeholder="UF"
+            value={uf}
+            onChange={(e) => setUf(e.target.value)}
+          />
            <input
             placeholder="Chave Pix"
-            /*value={pix}
-            onChange={(e) => setEmail(e.target.value)}*/
+            value={pix}
+            onChange={(e) => setPix(e.target.value)}
           />
-          {/* <input
-            type="url"
-            placeholder="Coloque o link da imagem aqui!"
-            value={foto}
-            onChange={(e) => setFoto(e.target.value)}
-          />
-          {formValido ? <div></div> : <span id="erro">campo obrigatório</span>} */}
           <div className="App">
             {imagesvalida ? (
               <span></span>
