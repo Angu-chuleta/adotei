@@ -4,7 +4,7 @@ import express, { Express } from 'express';
 import helmet from 'helmet';
 import { Mongoose } from 'mongoose';
 import { ReplaySubject } from 'rxjs';
-import { connectDb } from './config';
+import { connectDb, PORT } from './config';
 
 export default class RestApi {
   private app: Express;
@@ -26,7 +26,7 @@ export default class RestApi {
     return this.mongoose;
   }
 
-  listen(port: number = 3000): Promise<void> {
+  listen(port: number = Number(PORT) || 3000): Promise<void> {
     return new Promise((resolve, reject) => {
       this.ready.subscribe(
         () => {
