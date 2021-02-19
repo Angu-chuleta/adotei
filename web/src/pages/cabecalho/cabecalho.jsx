@@ -13,7 +13,7 @@ export default function Cabecalho() {
   useEffect(() => {
     let saved = JSON.parse(localStorage.getItem("adotei@token"));
     if (saved === null) {
-      history.push("/");
+      //history.push("/");
     } else {
       setNome(saved.user.name);
       setRole(saved.role);
@@ -63,7 +63,27 @@ export default function Cabecalho() {
             ) : (
               <div>
                 <li>
-                  <Link id="menuitem" to="/login">
+                  <Link id="menuitem" to="/">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                <Link id="menuitem" to="/">
+                    Busca Pets
+                  </Link>
+                </li>
+                <li>
+                <Link id="menuitem" to="/quemsomos">
+                    Quem somos?
+                  </Link>
+                </li>
+                <li>
+                <Link id="menuitem" to="/registro">
+                    Cadastrar Ong
+                  </Link>
+                </li>
+                <li>
+                <Link id="menuitem" to="/login">
                     Login
                   </Link>
                 </li>
