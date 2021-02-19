@@ -10,11 +10,11 @@ import GuardedRoute from "./services/guardedRoutes";
 import QuemSomos from "./pages/quemSomos/quemsomos";
 
 export default function Routes() {
-  let storage = JSON.parse(localStorage.getItem("adotei@token") | {});
   function estaAutenticado() {
+    const storage = JSON.parse(localStorage.getItem("adotei@token") | {});
     return storage.token !== "";
   }
-  let autenticado = estaAutenticado();
+  const autenticado = estaAutenticado();
   return (
     <BrowserRouter>
       <Switch>

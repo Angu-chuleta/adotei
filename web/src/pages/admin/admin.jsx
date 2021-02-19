@@ -13,7 +13,7 @@ export default function ProfileOng() {
   useEffect(() => {
     setload(true);
     apiService
-      .get("pet")
+      .get("my-pets")
       .then((response) => {
         setPets(response.data);
         setload(false);
