@@ -13,7 +13,7 @@ export default function Cabecalho() {
   useEffect(() => {
     let saved = JSON.parse(localStorage.getItem("adotei@token"));
     if (saved === null) {
-      setNome("");
+      history.push("/");
     } else {
       setNome(saved.user.name);
       setRole(saved.role);
@@ -27,13 +27,13 @@ export default function Cabecalho() {
 
   const logout = () => {
     localStorage.clear();
-    history.push("/login");
+    setNome("");
   };
   return width >= 999 ? (
     <nav>
       <div className="nav-wrapper">
         <div id="logomenu">
-          <Link id="menuitem" to="/admin">
+          <Link id="menuitem" to="/">
             <img id="logo" alt="logo" src={logodotei}></img>
           </Link>
 
@@ -55,7 +55,7 @@ export default function Cabecalho() {
                   </Link>
                 </li>
                 <li>
-                  <Link id="menuitem" to="/login" onClick={() => logout()}>
+                  <Link id="menuitem" to="/" onClick={() => logout()}>
                     sair
                   </Link>
                 </li>

@@ -6,16 +6,23 @@ import Registro from "./pages/registro/registro";
 import admin from "./pages/admin/admin";
 import newCase from "./pages/newCase/newCase";
 import perfil from "./pages/perfil/perfil";
+import GuardedRoute from "./services/guardedRoutes";
+
 export default function Routes() {
+  let storage = JSON.parse(localStorage.getItem("adotei@token") | {});
+  function estaAutenticado() {
+    return storage.token !== "";
+  }
+  let autenticado = estaAutenticado();
   return (
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/login" exact component={Login} />
-        <Route path="/admin" exact component={admin} />
-        <Route path="/perfil" exact component={perfil} />
-        <Route path="/new" exact component={newCase} />
         <Route path="/registro" exact component={Registro} />
+        <GuardedRoute path="/admin" component={admin} auth={autenticado} />
+        <GuardedRoute path="/perfil" component={perfil} auth={autenticado} />
+        <GuardedRoute path="/new" component={newCase} auth={autenticado} />
         <Route path="/*" component={Home} />
       </Switch>
     </BrowserRouter>
