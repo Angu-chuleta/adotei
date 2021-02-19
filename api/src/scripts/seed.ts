@@ -3,7 +3,7 @@ import { authService, userService, petService } from '../services';
 import { connectDb } from '../config';
 
 const createUsers = async () => {
-  const username = 'icaro';
+  const username = 'tadeu';
 
   const exists = await userService.getByUsername(username);
 
@@ -14,14 +14,14 @@ const createUsers = async () => {
   const user = await userService.create({
     username,
     password: await authService.hashPassword('123'),
-    name: 'icaro',
+    name: 'tadeu',
     foto: 'https://avatars.githubusercontent.com/u/10122339?s=460&v=4',
-    email: 'icaro@a.com',
+    email: 'tadeu@a.com',
     telefone: '999999',
     sobre: 'lindo',
     pets: [],
     uf: 'ES',
-    cidade: 'Vila Velha (W)',
+    cidade: 'Cariacica',
     bank_information: {
       pix_key: 'aljsq3nc8nzsfzs123f41s4sg684s4g6d4',
     },
