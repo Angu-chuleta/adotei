@@ -57,7 +57,7 @@ class UserController extends BaseController<IUserModel, UserService> {
       const token = await authService.login(username, password);
       res.json(token);
     } catch (error) {
-      res.status(400).json(error);
+      res.status(400).json({ message: error.message });
     }
   };
 }

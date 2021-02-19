@@ -9,9 +9,9 @@ class AuthController {
       const token = await authService.login(username, password);
       res.json(token);
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log(error);
-
-      res.status(400).json(error);
+      res.status(400).json({ message: error.message });
     }
   };
 }

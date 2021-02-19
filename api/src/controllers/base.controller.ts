@@ -9,7 +9,7 @@ export interface IControllerModelKeys<T> {
 
 export abstract class BaseController<
   A extends IBaseModel,
-  S extends BaseService<A>
+  S extends BaseService<A>,
 > {
   constructor(protected service: S, protected keys: IControllerModelKeys<A>) {}
 
@@ -31,7 +31,7 @@ export abstract class BaseController<
       const reg = await this.service.create(model);
       res.status(201).json(reg);
     } catch (error) {
-      res.status(400).json(error);
+      res.status(400).json({ message: error.message });
     }
   };
 
@@ -45,7 +45,7 @@ export abstract class BaseController<
       const reg = await this.service.update(id, model);
       res.json(reg);
     } catch (error) {
-      res.status(400).json(error);
+      res.status(400).json({ message: error.message });
     }
   };
 
@@ -55,7 +55,7 @@ export abstract class BaseController<
       const reg = await this.service.getById(id);
       res.json(reg);
     } catch (error) {
-      res.status(400).json(error);
+      res.status(400).json({ message: error.message });
     }
   };
 
@@ -65,7 +65,7 @@ export abstract class BaseController<
       const reg = await this.service.delete(id);
       res.json(reg);
     } catch (error) {
-      res.status(400).json(error);
+      res.status(400).json({ message: error.message });
     }
   };
 }
