@@ -1,0 +1,10 @@
+build:
+  docker:
+    web: Dockerfile
+  config:
+    NODE_ENV: production
+    JWT: JWT
+    PORT: PORT
+    MONGODB_PASS: MONGODB_PASS
+    MONGODB_USER: MONGODB_USER
+    MONGODB_URL: MONGODB_URL
