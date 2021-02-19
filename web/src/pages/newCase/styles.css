@@ -1,0 +1,37 @@
+h1 {
+  text-align: center;
+}
+.newcase {
+  margin-top: 50px;
+  background: #f0f0f5;
+  border-radius: 8px;
+}
+.App {
+  margin-top: 10px;
+}
+#labelidade {
+  color: red;
+}
+
+/* .newCase-container .content section {
+  width: 100%;
+  max-width: 380px;
+}
+
+.newCase-container .content section h1 {
+  margin: 64px 0 32px;
+  font-size: 32px;
+}
+
+.registerUser-container .content section p {
+  font-size: 18px;
+  color: #737380;
+}
+
+.newCase-container .content form {
+  width: 100%;
+  max-width: 450px;
+}
+
+.newCase-container .content form input {
+  margin-top: 8px; */
