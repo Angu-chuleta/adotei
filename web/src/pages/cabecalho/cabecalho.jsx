@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import logodotei from "../../assets/imagens/logodotei.png";
+import logodotei from "../../assets/imagens/logodotei.svg";
 import { Link, useHistory } from "react-router-dom";
 import "./cabecalho.css";
 

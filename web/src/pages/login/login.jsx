@@ -3,7 +3,7 @@ import "./login.css";
 import { Link, useHistory } from "react-router-dom";
 import { FiLogIn } from "react-icons/fi";
 import apiSevice from "../../services/api.service";
-
+import logosquad from "../../assets/imagens/logosquad.svg";
 export default function Login() {
   const history = useHistory();
   const [username, setLogin] = useState("");
@@ -54,6 +54,7 @@ export default function Login() {
 
   return (
     <div className="row">
+      <Link to="/"><center><img className="logomenu" src={logosquad}/></center></Link>
       <div className="login-container col s12 m8 offset-m2 l6 offset-l3 xl4 offset-xl4">
         <div className="col s12">
           <Link className="button btn waves-effect waves-light col s2" to="/">
@@ -62,7 +63,7 @@ export default function Login() {
         </div>
         <section className="form col s8 offset-s2">
           <form onSubmit={handleLogin}>
-            <h1 id="adotei">Adotei</h1>
+          
 
             <h3 id="bemvindo">Bem vindo!</h3>
 

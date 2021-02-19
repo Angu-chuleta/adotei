@@ -13,6 +13,7 @@ export default function RegisterUser() {
   const [telefone, setTelefone] = useState("");
   const [username, setUsename] = useState("");
   const [password, setPassword] = useState("");
+ // const [pix, setPix] = useState("");
   const [load, setLoad] = useState(false);
   const [formValido, setformValido] = useState(true);
   const [images, setImages] = React.useState([]);
@@ -54,6 +55,7 @@ export default function RegisterUser() {
         telefone,
         sobre,
         credito,
+        //pix,
       },
     };
     setformValido(true);
@@ -113,6 +115,11 @@ export default function RegisterUser() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+          />
+           <input
+            placeholder="Chave Pix"
+            /*value={pix}
+            onChange={(e) => setEmail(e.target.value)}*/
           />
           {/* <input
             type="url"
