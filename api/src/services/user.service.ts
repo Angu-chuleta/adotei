@@ -6,17 +6,7 @@ export class UserService extends BaseService<IUserModel> {
     super(UserModel);
   }
 
-  async addCredit(id: string, credit: number) {
-    let user;
-    try {
-      user = await this.BaseModel.findById(id);
-    } catch (error) {
-      throw new Error('Usuário inexistente');
-    }
-    if (user && user.credito !== null) {
-      user.credito += credit;
-    }
-    await this.BaseModel.updateOne({ _id: id }, user);
-    return { message: 'ok!' };
-  }
+  getByUsername = async (username: string): Promise<IUserModel | null> => {
+    return this.BaseModel.findOne({ username }).exec();
+  };
 }
