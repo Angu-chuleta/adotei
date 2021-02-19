@@ -83,11 +83,9 @@ export default function RegisterUser() {
     <div className="row">
       <div className="caixaRegistro col s12 m8 offset-m2 l6 offset-l3 xl4 offset-xl4">
         <section className="col s12 sectionbox">
-          <div className="col s2">
-            <Link className=".back-link" to="/login">
-              <button className="waves-effect waves-light btn voltarbtn">
-                Voltar
-              </button>
+          <div className="col s12">
+            <Link className="button btn waves-effect waves-light col s2" to="/">
+              Voltar
             </Link>
           </div>
           <div className="col s12 m6 offset-m1">

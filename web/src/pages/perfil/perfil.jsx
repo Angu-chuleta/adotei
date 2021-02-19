@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import "./styles.css";
-import Cabecalho from "../Cabecalho";
+import "./perfil.css";
+import Cabecalho from "../cabecalho/cabecalho";
 import { FaHandHoldingHeart } from "react-icons/fa";
-import apiService from "../../services/api";
+import apiService from "../../services/api.service";
 import { useHistory } from "react-router-dom";
 
 export default function ProfileUser() {

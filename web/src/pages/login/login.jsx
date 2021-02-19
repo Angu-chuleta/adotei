@@ -55,6 +55,11 @@ export default function Login() {
   return (
     <div className="row">
       <div className="login-container col s12 m8 offset-m2 l6 offset-l3 xl4 offset-xl4">
+        <div className="col s12">
+          <Link className="button btn waves-effect waves-light col s2" to="/">
+            Voltar
+          </Link>
+        </div>
         <section className="form col s8 offset-s2">
           <form onSubmit={handleLogin}>
             <h1 id="adotei">Adotei</h1>

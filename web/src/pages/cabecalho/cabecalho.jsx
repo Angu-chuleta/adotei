@@ -33,7 +33,9 @@ export default function Cabecalho() {
     <nav>
       <div className="nav-wrapper">
         <div id="logomenu">
-          <img id="logo" alt="logo" src={logodotei}></img>
+          <Link id="menuitem" to="/admin">
+            <img id="logo" alt="logo" src={logodotei}></img>
+          </Link>
 
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             {nome !== "" ? (
@@ -42,10 +44,15 @@ export default function Cabecalho() {
                   <ul>
                     <li>
                       <Link id="menuitem" to="/admin">
-                        Admin {nome}
+                        Admin
                       </Link>
                     </li>
                   </ul>
+                </li>
+                <li>
+                  <Link id="menuitem" to="/perfil">
+                    perfil de {nome}
+                  </Link>
                 </li>
                 <li>
                   <Link id="menuitem" to="/login" onClick={() => logout()}>
@@ -57,7 +64,7 @@ export default function Cabecalho() {
               <div>
                 <li>
                   <Link id="menuitem" to="/login">
-                    Longin
+                    Login
                   </Link>
                 </li>
               </div>
