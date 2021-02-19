@@ -21,7 +21,7 @@ class PetController extends BaseController<IPetModel, PetService> {
     });
   }
 
-  myPets = async (req: Request & { user: any }, res: Response) => {
+  myPets = async (req: Request & { user?: any }, res: Response) => {
     try {
       const { user } = req;
       const pets = await petService.getByUser(user.userId);
