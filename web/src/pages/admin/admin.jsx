@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FiTrash2 } from "react-icons/fi";
-import "./styles.css";
-import Cabecalho from "../Cabecalho";
-import apiService from "../../services/api";
+import "./admin.css";
+import Cabecalho from "../cabecalho/cabecalho";
+import apiService from "../../services/api.service";
 
 //Incluir instituição no cadastro Pet
 export default function ProfileOng() {
