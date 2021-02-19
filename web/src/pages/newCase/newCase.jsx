@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./newcase.css";
+import "./newCase.css";
 import Cabecalho from "../cabecalho/cabecalho";
 // import { useHistory } from "react-router-dom";
 import apiService from "../../services/api.service";
