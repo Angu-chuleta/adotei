@@ -1,6 +1,8 @@
 import { Router } from 'express';
 import { authController } from '../controllers';
-import { checkJwt } from '../middlewares/auth.middleware';
+import { checkJwt, checkRole } from '../middlewares';
+
+const adminRole = 2;
 
 const router = Router();
 
@@ -77,9 +79,10 @@ router.post('/auth/change-password', [checkJwt], authController.changePassword);
  *           items:
  *             $ref: '#/definitions/User'
  */
-router.post('/auth/new', authController.newUser);
+router.post('/auth/new', [checkJwt, checkRole(adminRole)], authController.newUser);
 
-router.get('/auth/list', authController.getAll);
-router.delete('/auth/:id', authController.delete);
+router.get('/auth/list', [checkJwt, checkRole(adminRole)], authController.getAll);
+
+router.delete('/auth/:id', [checkJwt, checkRole(adminRole)], authController.delete);
 
 export default router;
