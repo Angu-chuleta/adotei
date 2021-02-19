@@ -9,6 +9,8 @@ class AuthController {
       const token = await authService.login(username, password);
       res.json(token);
     } catch (error) {
+      console.log(error);
+
       res.status(400).json(error);
     }
   };

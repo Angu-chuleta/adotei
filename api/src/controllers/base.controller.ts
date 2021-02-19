@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { BaseService } from 'services/base.service';
+import { BaseService } from '../services/base.service';
 import { IBaseModel } from '../models';
 
 export interface IControllerModelKeys<T> {
@@ -9,7 +9,7 @@ export interface IControllerModelKeys<T> {
 
 export abstract class BaseController<
   A extends IBaseModel,
-  S extends BaseService<A>,
+  S extends BaseService<A>
 > {
   constructor(protected service: S, protected keys: IControllerModelKeys<A>) {}
 

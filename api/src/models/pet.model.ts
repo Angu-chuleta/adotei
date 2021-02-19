@@ -7,7 +7,7 @@ export interface IPetModel extends Document {
   sobre: string;
   idade: number;
   foiAdotado: boolean;
-  institution: string;
+  userId: string;
 }
 
 export const PetSchema = new Schema<IPetModel>({
@@ -35,7 +35,7 @@ export const PetSchema = new Schema<IPetModel>({
     type: Boolean,
     required: true,
   },
-  institution: {
+  userId: {
     type: String,
     required: true,
   },

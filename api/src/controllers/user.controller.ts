@@ -40,7 +40,7 @@ class UserController extends BaseController<IUserModel, UserService> {
         (obj, key) => ({ ...obj, ...{ [key]: req.body[key] } }),
         {} as any,
       );
-      model.password = authService.hashPassword(model.password);
+      model.password = await authService.hashPassword(model.password);
       const reg = await this.service.create(model);
       res.status(201).json(reg);
     } catch (error) {

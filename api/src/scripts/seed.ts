@@ -1,5 +1,5 @@
 import { IUserModel } from '../models';
-import { userService, petService } from '../services';
+import { authService, userService, petService } from '../services';
 import { connectDb } from '../config';
 
 const createUsers = async () => {
@@ -13,7 +13,7 @@ const createUsers = async () => {
 
   const user = await userService.create({
     username,
-    password: '123',
+    password: await authService.hashPassword('123'),
     name: 'icaro',
     foto: 'https://avatars.githubusercontent.com/u/10122339?s=460&v=4',
     email: 'icaro@a.com',
@@ -40,7 +40,7 @@ const createPets = async (user: IUserModel) => {
     sobre: 'Este cachorro é lindo',
     idade: 1,
     foiAdotado: false,
-    institution: user.id,
+    userId: user.id,
   });
 
   return [pet];

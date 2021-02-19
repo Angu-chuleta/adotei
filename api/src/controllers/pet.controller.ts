@@ -1,6 +1,7 @@
 import { PetService, petService } from '../services';
 import { BaseController } from './base.controller';
 import { IPetModel } from '../models';
+import { Request, Response } from 'express';
 
 class PetController extends BaseController<IPetModel, PetService> {
   constructor() {
@@ -13,19 +14,16 @@ class PetController extends BaseController<IPetModel, PetService> {
         'sobre',
         'idade',
         'foiAdotado',
-        'institution',
+        'userId',
       ],
       // keys do req.body que serão usados no update
-      update: [
-        'name',
-        'foto',
-        'porte',
-        'sobre',
-        'idade',
-        'foiAdotado',
-        'institution',
-      ],
+      update: ['name', 'foto', 'porte', 'sobre', 'idade', 'foiAdotado'],
     });
+  }
+  async myPets(req: Request & { user: any }, res: Response) {
+    const user = req.user;
+    const pets = await petService.getByUser(user.userId);
+    res.json(pets);
   }
 }
 
