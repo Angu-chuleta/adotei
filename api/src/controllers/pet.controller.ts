@@ -1,7 +1,7 @@
+import { Request, Response } from 'express';
+import { IPetModel } from '../models';
 import { PetService, petService } from '../services';
 import { BaseController } from './base.controller';
-import { IPetModel } from '../models';
-import { Request, Response } from 'express';
 
 class PetController extends BaseController<IPetModel, PetService> {
   constructor() {
@@ -20,11 +20,12 @@ class PetController extends BaseController<IPetModel, PetService> {
       update: ['name', 'foto', 'porte', 'sobre', 'idade', 'foiAdotado'],
     });
   }
-  async myPets(req: Request & { user: any }, res: Response) {
-    const user = req.user;
+
+  myPets = async (req: Request & { user: any }, res: Response) => {
+    const { user } = req;
     const pets = await petService.getByUser(user.userId);
     res.json(pets);
-  }
+  };
 }
 
 export const petController = new PetController();

@@ -1,8 +1,7 @@
-import { IUserModel } from '../models';
-import { userService, UserService } from '../services';
-import { BaseController } from './base.controller';
 import { Request, Response } from 'express';
-import { authService } from '../services';
+import { IUserModel } from '../models';
+import { authService, userService, UserService } from '../services';
+import { BaseController } from './base.controller';
 
 class UserController extends BaseController<IUserModel, UserService> {
   constructor() {
@@ -17,6 +16,7 @@ class UserController extends BaseController<IUserModel, UserService> {
         'pets',
         'uf',
         'cidade',
+        'password',
         'bank_information',
       ],
       // keys do req.body que serão usados no update
@@ -29,6 +29,7 @@ class UserController extends BaseController<IUserModel, UserService> {
         'pets',
         'uf',
         'cidade',
+        'password',
         'bank_information',
       ],
     });
@@ -44,7 +45,7 @@ class UserController extends BaseController<IUserModel, UserService> {
       const reg = await this.service.create(model);
       res.status(201).json(reg);
     } catch (error) {
-      res.status(400).json(error);
+      res.status(400).json({ message: error.message });
     }
   };
 
