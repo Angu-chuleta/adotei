@@ -1,9 +1,10 @@
+#### API
 ################################################################
 # Install dev dependencies and build
 ################################################################
 FROM node:14-alpine as builder
 
-ADD . /app/service
+ADD api/. /app/service
 
 WORKDIR /app/service
 
