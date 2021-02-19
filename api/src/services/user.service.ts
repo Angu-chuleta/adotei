@@ -6,7 +6,7 @@ export class UserService extends BaseService<IUserModel> {
     super(UserModel);
   }
 
-  getByUsername = async (username: string): Promise<IUserModel | null> => {
+  getByUsername(username: string): Promise<IUserModel | null> {
     return this.BaseModel.findOne({ username }).exec();
-  };
+  }
 }

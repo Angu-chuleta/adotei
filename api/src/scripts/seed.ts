@@ -1,6 +1,6 @@
-import { IUserModel } from '../models';
-import { authService, userService, petService } from '../services';
 import { connectDb } from '../config';
+import { IUserModel } from '../models';
+import { authService, petService, userService } from '../services';
 
 const createUsers = async () => {
   const username = 'tadeu';
@@ -26,6 +26,7 @@ const createUsers = async () => {
       pix_key: 'aljsq3nc8nzsfzs123f41s4sg684s4g6d4',
     },
   });
+  // eslint-disable-next-line no-console
   console.log(`User ${user.name} created!`);
 
   return [user];
@@ -48,8 +49,10 @@ const createPets = async (user: IUserModel) => {
 
 const main = async () => {
   await connectDb();
+  // eslint-disable-next-line no-console
   console.log('Creating users...');
   const [user] = await createUsers();
+  // eslint-disable-next-line no-console
   console.log('Creating pets...');
   await createPets(user);
 };
@@ -57,6 +60,7 @@ const main = async () => {
 main()
   .then(() => process.exit(0))
   .catch((e: any) => {
+    // eslint-disable-next-line no-console
     console.log(e);
     process.exit(1);
   });

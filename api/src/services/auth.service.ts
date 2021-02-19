@@ -1,7 +1,7 @@
-import { UserService } from './user.service';
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
 import { authConfig } from '../config';
+import { UserService } from './user.service';
 
 const userService = new UserService();
 
@@ -28,6 +28,5 @@ export class AuthService {
     return result;
   };
 
-  checkIfPasswordIsValid = (pass: string, hash: string) =>
-    bcrypt.compareSync(pass, hash);
+  checkIfPasswordIsValid = (pass: string, hash: string) => bcrypt.compareSync(pass, hash);
 }

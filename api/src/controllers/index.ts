@@ -3,4 +3,9 @@ import { petController } from './pet.controller';
 import { userController } from './user.controller';
 import { utilsController } from './utils.controller';
 
-export { authController, petController, userController, utilsController };
+export {
+  authController,
+  petController,
+  userController,
+  utilsController,
+};
