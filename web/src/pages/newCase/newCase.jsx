@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./newCase.css";
 import Cabecalho from "../cabecalho/cabecalho";
 import { useHistory } from "react-router-dom";
@@ -6,10 +6,7 @@ import apiService from "../../services/api.service";
 import ImageUploading from "react-images-uploading";
 
 export default function NewCase() {
-  const [ong, setOng] = useState([]);
-  const [ongSelected, setOngSelected] = useState([]);
   const [images, setImages] = React.useState([]);
-  const [load, setLoad] = useState(false);
   const [loadbtn, setLoadbtn] = useState(false);
   const [formErro, setFormErro] = useState(false);
   const maxNumber = 1;
@@ -40,20 +37,6 @@ export default function NewCase() {
     setFoto([]);
   };
 
-  useEffect(() => {
-    setLoad(true);
-
-    apiService
-      .get("institution")
-      .then((response) => {
-        setOng(response.data);
-        setLoad(false);
-      })
-      .catch((error) => {
-        setLoad(false);
-      });
-  }, []);
-
   function radioChange(e) {
     setOngSelected("aaa");
   }
@@ -63,6 +46,8 @@ export default function NewCase() {
   }
 
   async function sendData() {
+    let saved = JSON.parse(localStorage.getItem("adotei@token"));
+
     const data = {
       name,
       foto,
@@ -70,7 +55,7 @@ export default function NewCase() {
       sobre,
       idade,
       foiAdotado,
-      institution: "5f7ce18cc254640017e3f0e7",
+      userId: saved.user._id,
     };
     setFormErro(false);
     console.log(data);
@@ -95,7 +80,9 @@ export default function NewCase() {
       <div>
         <div className="newcase col s12 m8 offset-m2 l6 offset-l3 xl4 offset-xl4">
           <section>
-            <center><h4>Novo Animal</h4></center>
+            <center>
+              <h4>Novo Animal</h4>
+            </center>
           </section>
           <form className="col s12 m8 offset-m2 l10 offset-l1">
             <input
@@ -137,13 +124,6 @@ export default function NewCase() {
                 <span>Pequeno</span>
               </label>
             </p>
-            {/* <input
-              className="validate"
-              placeholder="Idade em meses"
-              type="number"
-              value={idade}
-              onChange={(e) => setIdade(e.target.value)}
-            /> */}
 
             <p className="range-field">
               <label>
@@ -166,11 +146,6 @@ export default function NewCase() {
               value={sobre}
               onChange={(e) => setSobre(e.target.value)}
             />
-            {/* <input
-              placeholder="Link da imagem aqui!!"
-              value={foto}
-              onChange={(e) => setFoto(e.target.value)}
-            /> */}
             {imagesvalida ? (
               <span></span>
             ) : (
@@ -213,13 +188,6 @@ export default function NewCase() {
                 )}
               </ImageUploading>
             </div>
-            {load ? (
-              <div className="progress">
-                <div className="indeterminate"></div>
-              </div>
-            ) : (
-              <div></div>
-            )}
             {!formErro ? (
               <span></span>
             ) : (

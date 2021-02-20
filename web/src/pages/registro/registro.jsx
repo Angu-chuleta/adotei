@@ -47,19 +47,17 @@ export default function RegisterUser() {
     const credito = 0;
     setLoad(true);
     const data = {
-      user: {
-        username,
-        password,
-        name,
-        foto,
-        email,
-        telefone,
-        sobre,
-        uf,
-        cidade,
-        bank_information: {
-          pix_key:pix
-        }
+      username,
+      password,
+      name,
+      foto,
+      email,
+      telefone,
+      sobre,
+      uf,
+      cidade,
+      bank_information: {
+        pix_key: pix,
       },
     };
     setformValido(true);
@@ -120,17 +118,17 @@ export default function RegisterUser() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-            <input
+          <input
             placeholder="Cidade"
             value={cidade}
             onChange={(e) => setCidade(e.target.value)}
           />
-            <input
+          <input
             placeholder="UF"
             value={uf}
             onChange={(e) => setUf(e.target.value)}
           />
-           <input
+          <input
             placeholder="Chave Pix"
             value={pix}
             onChange={(e) => setPix(e.target.value)}

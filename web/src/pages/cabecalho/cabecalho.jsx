@@ -67,23 +67,23 @@ export default function Cabecalho() {
                     Home
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                 <Link id="menuitem" to="/">
                     Busca Pets
                   </Link>
-                </li>
+                </li> */}
                 <li>
-                <Link id="menuitem" to="/quemsomos">
+                  <Link id="menuitem" to="/quemsomos">
                     Quem somos?
                   </Link>
                 </li>
                 <li>
-                <Link id="menuitem" to="/registro">
+                  <Link id="menuitem" to="/registro">
                     Cadastrar Ong
                   </Link>
                 </li>
                 <li>
-                <Link id="menuitem" to="/login">
+                  <Link id="menuitem" to="/login">
                     Login
                   </Link>
                 </li>
