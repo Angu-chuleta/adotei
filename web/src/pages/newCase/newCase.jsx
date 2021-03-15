@@ -14,7 +14,7 @@ export default function NewCase() {
   const history = useHistory();
   const [name, setName] = useState("");
   const [foto, setFoto] = useState("");
-  const [idade, setIdade] = useState("");
+  const [idade, setIdade] = useState(0);
   const [sobre, setSobre] = useState("");
   const [porte, setPorte] = useState("");
   const foiAdotado = false;
@@ -37,10 +37,6 @@ export default function NewCase() {
     setFoto([]);
   };
 
-  function radioChange(e) {
-    setOngSelected("aaa");
-  }
-
   function radioPorte(e) {
     setPorte(e.target.value);
   }
@@ -57,21 +53,25 @@ export default function NewCase() {
       foiAdotado,
       userId: saved.user._id,
     };
-    setFormErro(false);
-    console.log(data);
-    setLoadbtn(true);
-    apiService
-      .post("pet", data)
-      .then((response) => {
-        console.log(`Cadastro realizado com sucesso`, response.data);
-        history.push("/admin");
-        setLoadbtn(false);
-      })
-      .catch((error) => {
-        setFormErro(true);
-        setLoadbtn(false);
-        console.log("Erro no cadastro tente novamente", error);
-      });
+
+    if (!(name != "" && porte != "" && sobre != "" && foto != "")) {
+      setFormErro(true);
+    } else {
+      setFormErro(false);
+      setLoadbtn(true);
+      apiService
+        .post("pet", data)
+        .then((response) => {
+          console.log(`Cadastro realizado com sucesso`, response.data);
+          history.push("/admin");
+          setLoadbtn(false);
+        })
+        .catch((error) => {
+          setFormErro(true);
+          setLoadbtn(false);
+          console.log("Erro no cadastro tente novamente", error);
+        });
+    }
   }
 
   return (
@@ -84,73 +84,117 @@ export default function NewCase() {
               <h4>Novo Animal</h4>
             </center>
           </section>
-          <form className="col s12 m8 offset-m2 l10 offset-l1">
-            <input
-              className="validate"
-              placeholder="Nome"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <p>
-              <label>
-                <input
-                  name="porte"
-                  value="Grande"
-                  type="radio"
-                  onChange={radioPorte}
-                />
-                <span>Grande</span>
-              </label>
-            </p>
-            <p>
-              <label>
-                <input
-                  name="porte"
-                  value="Médio"
-                  type="radio"
-                  onChange={radioPorte}
-                />
-                <span>Médio</span>
-              </label>
-            </p>
-            <p>
-              <label>
-                <input
-                  name="porte"
-                  value="Pequeno"
-                  type="radio"
-                  onChange={radioPorte}
-                />
-                <span>Pequeno</span>
-              </label>
-            </p>
-
-            <p className="range-field">
-              <label>
-                idade <span id="labelidade">{idade}</span> anos{" "}
-              </label>
+          <form
+            className="col s12 m8 offset-m2 l10 offset-l1"
+            onsubmit={(e) => {
+              e.preventDefault();
+            }}
+          >
+            <div class="input-field">
               <input
-                onChange={(e) => setIdade(e.target.value)}
-                value={idade}
-                type="range"
-                id="test5"
-                start="1"
-                min="0"
-                max="30"
+                id="nome"
+                required
+                className="validate"
+                placeholder="Doguinho"
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
-            </p>
+              <label for="nome">Nome do animal</label>
+              {name === "" && formErro ? (
+                <span id="erro">Nome é obrigatório</span>
+              ) : (
+                <span></span>
+              )}
+            </div>
+            <div class="input-field">
+              <br />
+              <label>Porte do animal</label>
 
-            <label htmlFor="msg"></label>
-            <textarea
-              placeholder="Descrição:"
-              value={sobre}
-              onChange={(e) => setSobre(e.target.value)}
-            />
+              <br />
+              <p>
+                <label>
+                  <input
+                    name="porte"
+                    value="Grande"
+                    type="radio"
+                    onChange={radioPorte}
+                  />
+                  <span>Grande</span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input
+                    name="porte"
+                    value="Médio"
+                    type="radio"
+                    onChange={radioPorte}
+                  />
+                  <span>Médio</span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input
+                    name="porte"
+                    value="Pequeno"
+                    type="radio"
+                    onChange={radioPorte}
+                  />
+                  <span>Pequeno</span>
+                </label>
+              </p>
+            </div>
+            <div>
+              {porte === "" && formErro ? (
+                <span id="erro">Escolha o porte do animal</span>
+              ) : (
+                <span></span>
+              )}
+            </div>
+            <br />
+            <div class="input-field">
+              <p className="range-field">
+                <label for="test5">
+                  idade <span id="labelidade">{idade}</span> anos{" "}
+                </label>
+                <input
+                  onChange={(e) => setIdade(e.target.value)}
+                  value={idade}
+                  type="range"
+                  id="test5"
+                  start="1"
+                  min="0"
+                  max="30"
+                />
+              </p>
+            </div>
+            <div class="input-field">
+              <label for="msg">Descrição</label>
+              <textarea
+                required
+                placeholder="Esse animal é lindo..."
+                id="msg"
+                type="text"
+                value={sobre}
+                onChange={(e) => setSobre(e.target.value)}
+              />
+            </div>
+            <div>
+              {sobre === "" && formErro ? (
+                <span id="erro">Descrição é obrigatório</span>
+              ) : (
+                <span></span>
+              )}
+            </div>
+
             {imagesvalida ? (
               <span></span>
             ) : (
               <span id="erro">Imagem maior que 1MB</span>
             )}
+
             <div className="App">
               <ImageUploading
                 multiple
@@ -188,6 +232,14 @@ export default function NewCase() {
                 )}
               </ImageUploading>
             </div>
+            <div>
+              {foto === "" && formErro ? (
+                <span id="erro">foto é obrigatório</span>
+              ) : (
+                <span></span>
+              )}
+            </div>
+            <br />
             {!formErro ? (
               <span></span>
             ) : (
@@ -198,13 +250,12 @@ export default function NewCase() {
                 <div className="indeterminate"></div>
               </div>
             ) : (
-              <button
+              <a
                 onClick={() => sendData()}
                 className="button btn waves-effect waves-light"
-                type="submit"
               >
                 Cadastrar
-              </button>
+              </a>
             )}
           </form>
         </div>

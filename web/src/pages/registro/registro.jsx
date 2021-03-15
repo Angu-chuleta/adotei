@@ -22,7 +22,7 @@ export default function RegisterUser() {
   const [formValido, setformValido] = useState(true);
   const [images, setImages] = React.useState([]);
   const [imagesvalida, setImagesvalida] = React.useState(true);
-  const [usernameErro, setUsernameErro] = useState(false);
+
   const maxNumber = 1;
 
   const onChangeImage = (imageList, addUpdateIndex) => {
@@ -114,7 +114,7 @@ export default function RegisterUser() {
             <h5 id="adotei">Faça cadastro no Adotei e ajude os bichinhos</h5>
           </div>
         </section>
-        <form className="col s6 offset-s3">
+        <form className="col s6 offset-s3" onsubmit="return false">
           <div class="input-field">
             <input
               required
@@ -128,11 +128,13 @@ export default function RegisterUser() {
             />
             <label for="fullName">Nome Completo</label>
           </div>
-          {!usernameErro ? (
-            <div></div>
-          ) : (
-            <span id="erro">Usuário já existe</span>
-          )}
+          <div>
+            {!formValido && name === "" ? (
+              <span id="erro">Campo obrigatório</span>
+            ) : (
+              <div></div>
+            )}
+          </div>
           <div class="input-field">
             <input
               required
@@ -145,6 +147,13 @@ export default function RegisterUser() {
               onChange={(e) => setUsename(e.target.value)}
             />
             <label for="username">Usuário</label>
+          </div>
+          <div>
+            {!formValido && username === "" ? (
+              <span id="erro">Campo obrigatório</span>
+            ) : (
+              <div></div>
+            )}
           </div>
 
           <div class="input-field">
@@ -159,6 +168,13 @@ export default function RegisterUser() {
             />
             <label for="senha">Senha</label>
           </div>
+          <div>
+            {!formValido && password === "" ? (
+              <span id="erro">Campo obrigatório</span>
+            ) : (
+              <div></div>
+            )}
+          </div>
 
           <div class="input-field">
             <input
@@ -171,6 +187,13 @@ export default function RegisterUser() {
               onChange={(e) => setCidade(e.target.value)}
             />
             <label for="cidade">Cidade</label>
+          </div>
+          <div>
+            {!formValido && cidade === "" ? (
+              <span id="erro">Campo obrigatório</span>
+            ) : (
+              <div></div>
+            )}
           </div>
 
           <div class="input-field">
@@ -186,6 +209,13 @@ export default function RegisterUser() {
             />
             <label for="uf">UF</label>
           </div>
+          <div>
+            {!formValido && uf === "" ? (
+              <span id="erro">Campo obrigatório</span>
+            ) : (
+              <div></div>
+            )}
+          </div>
           <div class="input-field">
             <input
               required
@@ -197,6 +227,13 @@ export default function RegisterUser() {
               onChange={(e) => setPix(e.target.value)}
             />
             <label for="pix">PIX</label>
+          </div>
+          <div>
+            {!formValido && pix === "" ? (
+              <span id="erro">Campo obrigatório</span>
+            ) : (
+              <div></div>
+            )}
           </div>
           <div class="input-field">
             <input
@@ -210,6 +247,13 @@ export default function RegisterUser() {
               onChange={(e) => setEmail(e.target.value)}
             />{" "}
             <label for="email">Email</label>
+          </div>
+          <div>
+            {!formValido && email === "" ? (
+              <span id="erro">Campo obrigatório</span>
+            ) : (
+              <div></div>
+            )}
           </div>
           <label>Telefone</label>
           <div class="input-field">
@@ -241,6 +285,13 @@ export default function RegisterUser() {
               onChange={(e) => setTelefone(e.target.value)}
             /> */}
           </div>
+          <div>
+            {!formValido && telefone === "" ? (
+              <span id="erro">Campo obrigatório</span>
+            ) : (
+              <div></div>
+            )}
+          </div>
           <div class="input-field">
             <input
               id="about"
@@ -252,6 +303,13 @@ export default function RegisterUser() {
               onChange={(e) => setSobre(e.target.value)}
             />
             <label for="about">Sobre você</label>
+          </div>
+          <div>
+            {!formValido && sobre === "" ? (
+              <span id="erro">Campo obrigatório</span>
+            ) : (
+              <div></div>
+            )}
           </div>
           <div className="App">
             {imagesvalida ? (
@@ -302,10 +360,10 @@ export default function RegisterUser() {
               )}
             </ImageUploading>
           </div>
-          {formValido ? (
-            <div></div>
-          ) : (
+          {!formValido ? (
             <span id="erro">Preencha todos os campos</span>
+          ) : (
+            <div></div>
           )}
 
           {load ? (
@@ -313,14 +371,13 @@ export default function RegisterUser() {
               <div className="indeterminate"></div>
             </div>
           ) : (
-            <button
+            <a
               onClick={() => SendData()}
               className="button btn waves-effect waves-light"
-              type="submit"
               name="action"
             >
               Cadastrar
-            </button>
+            </a>
           )}
         </form>
       </div>

@@ -41,3 +41,6 @@ p {
 .registerUser-container .content form input-group input + input {
   margin-left: 8px;
 }
+#erro{
+  margin-bottom:0px;
+}
