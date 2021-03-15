@@ -3,6 +3,8 @@ import { Link, useHistory } from "react-router-dom";
 import apiService from "../../services/api.service";
 import "./registro.css";
 import ImageUploading from "react-images-uploading";
+import InputMask from "react-input-mask";
+import MaterialInput from "@material-ui/core/Input";
 
 export default function RegisterUser() {
   const history = useHistory();
@@ -42,9 +44,20 @@ export default function RegisterUser() {
     setFoto([]);
   };
 
+  const confereDados = () => {
+    return (
+      username != "" &&
+      password != "" &&
+      name != "" &&
+      email != "" &&
+      telefone != "" &&
+      sobre != "" &&
+      uf != "" &&
+      cidade != "" &&
+      pix != ""
+    );
+  };
   async function SendData() {
-    const role = 1;
-    const credito = 0;
     setLoad(true);
     const data = {
       username,
@@ -60,27 +73,32 @@ export default function RegisterUser() {
         pix_key: pix,
       },
     };
-    setformValido(true);
-    setUsernameErro(false);
-    apiService
-      .post("user", data)
-      .then((response) => {
-        console.log("Cadastro realizado com sucesso", response.status);
-        history.push("/");
-        setLoad(false);
-      })
-      .catch((err) => {
-        if (
-          err.response.data.message &&
-          err.response.data.message === "usuário já cadastrado"
-        ) {
-          setUsernameErro(true);
-        } else {
-          setformValido(false);
-        }
-        setLoad(false);
-        console.log("Erro no cadastro tente novamente: ", err.response.data);
-      });
+    if (!confereDados()) {
+      setformValido(false);
+      setLoad(false);
+    } else {
+      setformValido(true);
+      setUsernameErro(false);
+      apiService
+        .post("user", data)
+        .then((response) => {
+          console.log("Cadastro realizado com sucesso", response.status);
+          history.push("/");
+          setLoad(false);
+        })
+        .catch((err) => {
+          if (
+            err.response.data.message &&
+            err.response.data.message === "usuário já cadastrado"
+          ) {
+            setUsernameErro(true);
+          } else {
+            setformValido(false);
+          }
+          setLoad(false);
+          console.log("Erro no cadastro tente novamente: ", err.response.data);
+        });
+    }
   }
 
   return (
@@ -97,42 +115,144 @@ export default function RegisterUser() {
           </div>
         </section>
         <form className="col s6 offset-s3">
-          <input
-            placeholder="Nome completo"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+          <div class="input-field">
+            <input
+              required
+              className="validate"
+              type="text"
+              pattern="[A-Za-z]{*}"
+              placeholder="João Silva"
+              value={name}
+              id="fullName"
+              onChange={(e) => setName(e.target.value)}
+            />
+            <label for="fullName">Nome Completo</label>
+          </div>
           {!usernameErro ? (
             <div></div>
           ) : (
             <span id="erro">Usuário já existe</span>
           )}
-          <input
-            placeholder="Nome de usuário"
-            value={username}
-            onChange={(e) => setUsename(e.target.value)}
-          />
-          <input
-            placeholder="senha"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <input
-            placeholder="Cidade"
-            value={cidade}
-            onChange={(e) => setCidade(e.target.value)}
-          />
-          <input
-            placeholder="UF"
-            value={uf}
-            onChange={(e) => setUf(e.target.value)}
-          />
-          <input
-            placeholder="Chave Pix"
-            value={pix}
-            onChange={(e) => setPix(e.target.value)}
-          />
+          <div class="input-field">
+            <input
+              required
+              pattern="[A-Za-z0-9]{*}"
+              className="validate"
+              type="text"
+              id="username"
+              placeholder="joaosilva123"
+              value={username}
+              onChange={(e) => setUsename(e.target.value)}
+            />
+            <label for="username">Usuário</label>
+          </div>
+
+          <div class="input-field">
+            <input
+              required
+              id="senha"
+              className="validate"
+              placeholder="*****"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <label for="senha">Senha</label>
+          </div>
+
+          <div class="input-field">
+            <input
+              required
+              type="text"
+              id="cidade"
+              className="validate"
+              placeholder="São Paulo"
+              value={cidade}
+              onChange={(e) => setCidade(e.target.value)}
+            />
+            <label for="cidade">Cidade</label>
+          </div>
+
+          <div class="input-field">
+            <input
+              required
+              type="text"
+              id="uf"
+              className="validate"
+              pattern="[A-Z]{2}"
+              placeholder="SP"
+              value={uf}
+              onChange={(e) => setUf(e.target.value)}
+            />
+            <label for="uf">UF</label>
+          </div>
+          <div class="input-field">
+            <input
+              required
+              type="text"
+              id="pix"
+              className="validate"
+              placeholder="Chave Pix"
+              value={pix}
+              onChange={(e) => setPix(e.target.value)}
+            />
+            <label for="pix">PIX</label>
+          </div>
+          <div class="input-field">
+            <input
+              id="email"
+              className="validate"
+              placeholder="joaosilva@gmail.com"
+              type="email"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />{" "}
+            <label for="email">Email</label>
+          </div>
+          <label>Telefone</label>
+          <div class="input-field">
+            <InputMask
+              id="tel"
+              className="validate"
+              mask="(99) 9 9999 9999"
+              value={telefone}
+              onChange={(e) => setTelefone(e.target.value)}
+            >
+              {(inputProps) => (
+                <MaterialInput
+                  {...inputProps}
+                  id="tel"
+                  type="tel"
+                  disableUnderline
+                />
+              )}
+            </InputMask>
+
+            {/* <input
+              id="tel"
+              type="text"
+              required
+              className="validate"
+              pattern="[0-9]{12,}"
+              placeholder="99999999999"
+              value={telefone}
+              onChange={(e) => setTelefone(e.target.value)}
+            /> */}
+          </div>
+          <div class="input-field">
+            <input
+              id="about"
+              required
+              className="validate"
+              placeholder="Eu sou..."
+              type="text"
+              value={sobre}
+              onChange={(e) => setSobre(e.target.value)}
+            />
+            <label for="about">Sobre você</label>
+          </div>
           <div className="App">
             {imagesvalida ? (
               <span></span>
@@ -182,24 +302,6 @@ export default function RegisterUser() {
               )}
             </ImageUploading>
           </div>
-
-          <input
-            placeholder="Email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            placeholder="Telefone"
-            value={telefone}
-            onChange={(e) => setTelefone(e.target.value)}
-          />
-          <input
-            placeholder="Descrição"
-            type="text"
-            value={sobre}
-            onChange={(e) => setSobre(e.target.value)}
-          />
           {formValido ? (
             <div></div>
           ) : (
