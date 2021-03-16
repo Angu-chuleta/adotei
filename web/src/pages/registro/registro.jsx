@@ -5,6 +5,7 @@ import "./registro.css";
 import ImageUploading from "react-images-uploading";
 import InputMask from "react-input-mask";
 import MaterialInput from "@material-ui/core/Input";
+import Cabecalho from "../cabecalho/cabecalho";
 
 export default function RegisterUser() {
   const history = useHistory();
@@ -22,7 +23,7 @@ export default function RegisterUser() {
   const [formValido, setformValido] = useState(true);
   const [images, setImages] = React.useState([]);
   const [imagesvalida, setImagesvalida] = React.useState(true);
-
+  const [usernameErro, setUsernameErro] = React.useState(false);
   const maxNumber = 1;
 
   const onChangeImage = (imageList, addUpdateIndex) => {
@@ -87,10 +88,7 @@ export default function RegisterUser() {
           setLoad(false);
         })
         .catch((err) => {
-          if (
-            err.response.data.message &&
-            err.response.data.message === "usuário já cadastrado"
-          ) {
+          if (err.response.data.message) {
             setUsernameErro(true);
           } else {
             setformValido(false);
@@ -103,15 +101,11 @@ export default function RegisterUser() {
 
   return (
     <div className="row">
+      <Cabecalho />
       <div className="caixaRegistro col s12 m8 offset-m2 l6 offset-l3 xl4 offset-xl4">
         <section className="col s12 sectionbox">
-          <div className="col s12">
-            <Link className="button btn waves-effect waves-light col s2" to="/">
-              Voltar
-            </Link>
-          </div>
-          <div className="col s12 m6 offset-m1">
-            <h5 id="adotei">Faça cadastro no Adotei e ajude os bichinhos</h5>
+          <div className="col offset-m3">
+            <h5 id="adotei">Faça seu cadastro!</h5>
           </div>
         </section>
         <form className="col s6 offset-s3" onsubmit="return false">
@@ -126,15 +120,16 @@ export default function RegisterUser() {
               id="fullName"
               onChange={(e) => setName(e.target.value)}
             />
-            <label for="fullName">Nome Completo</label>
+            <label for="fullName">
+              Nome Completo
+              {!formValido && name === "" ? (
+                <span id="erro">* Campo obrigatório</span>
+              ) : (
+                <span></span>
+              )}
+            </label>
           </div>
-          <div>
-            {!formValido && name === "" ? (
-              <span id="erro">Campo obrigatório</span>
-            ) : (
-              <div></div>
-            )}
-          </div>
+
           <div class="input-field">
             <input
               required
@@ -146,14 +141,19 @@ export default function RegisterUser() {
               value={username}
               onChange={(e) => setUsename(e.target.value)}
             />
-            <label for="username">Usuário</label>
-          </div>
-          <div>
-            {!formValido && username === "" ? (
-              <span id="erro">Campo obrigatório</span>
-            ) : (
-              <div></div>
-            )}
+            <label for="username">
+              Usuário
+              {!formValido && username === "" ? (
+                <span id="erro">* Campo obrigatório</span>
+              ) : (
+                <span></span>
+              )}
+              {usernameErro ? (
+                <span id="erro">* Usuário já existe</span>
+              ) : (
+                <span></span>
+              )}
+            </label>
           </div>
 
           <div class="input-field">
@@ -166,14 +166,14 @@ export default function RegisterUser() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <label for="senha">Senha</label>
-          </div>
-          <div>
-            {!formValido && password === "" ? (
-              <span id="erro">Campo obrigatório</span>
-            ) : (
-              <div></div>
-            )}
+            <label for="senha">
+              Senha
+              {!formValido && password === "" ? (
+                <span id="erro">* Campo obrigatório</span>
+              ) : (
+                <div></div>
+              )}
+            </label>
           </div>
 
           <div class="input-field">
@@ -186,14 +186,14 @@ export default function RegisterUser() {
               value={cidade}
               onChange={(e) => setCidade(e.target.value)}
             />
-            <label for="cidade">Cidade</label>
-          </div>
-          <div>
-            {!formValido && cidade === "" ? (
-              <span id="erro">Campo obrigatório</span>
-            ) : (
-              <div></div>
-            )}
+            <label for="cidade">
+              Cidade
+              {!formValido && cidade === "" ? (
+                <span id="erro">* Campo obrigatório</span>
+              ) : (
+                <div></div>
+              )}
+            </label>
           </div>
 
           <div class="input-field">
@@ -207,14 +207,14 @@ export default function RegisterUser() {
               value={uf}
               onChange={(e) => setUf(e.target.value)}
             />
-            <label for="uf">UF</label>
-          </div>
-          <div>
-            {!formValido && uf === "" ? (
-              <span id="erro">Campo obrigatório</span>
-            ) : (
-              <div></div>
-            )}
+            <label for="uf">
+              UF
+              {!formValido && uf === "" ? (
+                <span id="erro">* Campo obrigatório</span>
+              ) : (
+                <div></div>
+              )}
+            </label>
           </div>
           <div class="input-field">
             <input
@@ -226,15 +226,16 @@ export default function RegisterUser() {
               value={pix}
               onChange={(e) => setPix(e.target.value)}
             />
-            <label for="pix">PIX</label>
+            <label for="pix">
+              PIX
+              {!formValido && pix === "" ? (
+                <span id="erro">* Campo obrigatório</span>
+              ) : (
+                <div></div>
+              )}
+            </label>
           </div>
-          <div>
-            {!formValido && pix === "" ? (
-              <span id="erro">Campo obrigatório</span>
-            ) : (
-              <div></div>
-            )}
-          </div>
+          <div></div>
           <div class="input-field">
             <input
               id="email"
@@ -246,29 +247,37 @@ export default function RegisterUser() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />{" "}
-            <label for="email">Email</label>
+            <label for="email">
+              Email
+              {!formValido && email === "" ? (
+                <span id="erro">* Campo obrigatório</span>
+              ) : (
+                <div></div>
+              )}
+            </label>
           </div>
-          <div>
-            {!formValido && email === "" ? (
-              <span id="erro">Campo obrigatório</span>
+
+          <label>
+            Telefone
+            {!formValido && telefone === "" ? (
+              <span id="erro">* Campo obrigatório</span>
             ) : (
               <div></div>
             )}
-          </div>
-          <label>Telefone</label>
+          </label>
           <div class="input-field">
             <InputMask
               id="tel"
-              className="validate"
               mask="(99) 9 9999 9999"
               value={telefone}
               onChange={(e) => setTelefone(e.target.value)}
             >
               {(inputProps) => (
                 <MaterialInput
+                  className="validate"
                   {...inputProps}
                   id="tel"
-                  type="tel"
+                  type="text"
                   disableUnderline
                 />
               )}
@@ -285,13 +294,7 @@ export default function RegisterUser() {
               onChange={(e) => setTelefone(e.target.value)}
             /> */}
           </div>
-          <div>
-            {!formValido && telefone === "" ? (
-              <span id="erro">Campo obrigatório</span>
-            ) : (
-              <div></div>
-            )}
-          </div>
+
           <div class="input-field">
             <input
               id="about"
@@ -302,22 +305,31 @@ export default function RegisterUser() {
               value={sobre}
               onChange={(e) => setSobre(e.target.value)}
             />
-            <label for="about">Sobre você</label>
+            <label for="about">
+              Sobre você
+              {!formValido && sobre === "" ? (
+                <span id="erro">* Campo obrigatório</span>
+              ) : (
+                <div></div>
+              )}
+            </label>
           </div>
-          <div>
-            {!formValido && sobre === "" ? (
-              <span id="erro">Campo obrigatório</span>
-            ) : (
-              <div></div>
-            )}
-          </div>
+
           <div className="App">
             {imagesvalida ? (
               <span></span>
             ) : (
               <span id="erro">Imagem maior que 1MB</span>
             )}
-
+            <label>
+              Foto de Perfil
+              {!formValido && foto === "" ? (
+                <span id="erro">* Campo obrigatório</span>
+              ) : (
+                <div></div>
+              )}
+            </label>
+            <br />
             <ImageUploading
               multiple
               value={images}
@@ -360,11 +372,6 @@ export default function RegisterUser() {
               )}
             </ImageUploading>
           </div>
-          {!formValido ? (
-            <span id="erro">Preencha todos os campos</span>
-          ) : (
-            <div></div>
-          )}
 
           {load ? (
             <div className="progress">

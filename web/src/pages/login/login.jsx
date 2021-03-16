@@ -4,6 +4,8 @@ import { Link, useHistory } from "react-router-dom";
 import { FiLogIn } from "react-icons/fi";
 import apiSevice from "../../services/api.service";
 import logosquad from "../../assets/imagens/logosquad.svg";
+import Cabecalho from "../cabecalho/cabecalho";
+
 export default function Login() {
   const history = useHistory();
   const [username, setLogin] = useState("");
@@ -54,39 +56,43 @@ export default function Login() {
 
   return (
     <div className="row">
-      <Link to="/"><center><img className="logomenu" src={logosquad}/></center></Link>
+      <Cabecalho />
+
       <div className="login-container col s12 m8 offset-m2 l6 offset-l3 xl4 offset-xl4">
-        <div className="col s12">
-          <Link className="button btn waves-effect waves-light col s2" to="/">
-            Voltar
-          </Link>
-        </div>
+        <div className="col s12"></div>
         <section className="form col s8 offset-s2">
           <form onSubmit={handleLogin}>
-          
-
             <h3 id="bemvindo">Bem vindo!</h3>
-
             <h5 id="textologin">faça seu login:</h5>
             {UserPass ? (
               <span id="erro">Usuário ou Senha incorreto</span>
             ) : (
               <p></p>
             )}
-            <input
-              placeholder="Login"
-              value={username}
-              onChange={(e) => setLogin(e.target.value)}
-            ></input>
-            {FildErro ? <span id="erro">campo obrigatório</span> : null}
-
-            <input
-              placeholder="Senha"
-              type="password"
-              value={password}
-              onChange={(e) => setSenha(e.target.value)}
-            ></input>
-            {FildErro ? <span id="erro">campo obrigatório</span> : null}
+            <div class="input-field">
+              <input
+                required
+                type="text"
+                className="validate"
+                id="username"
+                placeholder="Login"
+                value={username}
+                onChange={(e) => setLogin(e.target.value)}
+              ></input>{" "}
+              <label for="username">Usuário</label>
+            </div>
+            <div class="input-field">
+              <input
+                required
+                id="pass"
+                className="validate"
+                placeholder="Senha"
+                type="password"
+                value={password}
+                onChange={(e) => setSenha(e.target.value)}
+              ></input>
+              <label for="pass">Senha</label>
+            </div>
             {!load ? (
               <button
                 className={"button btn waves-effect waves-light"}
@@ -99,7 +105,6 @@ export default function Login() {
                 <div className="indeterminate"></div>
               </div>
             )}
-
             <Link className="row" to="/registro">
               <div className="col s12">
                 <FiLogIn size={16} color="#3b5998" />
