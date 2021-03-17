@@ -1,8 +1,0 @@
-Para execultar o prototipo siga a seguintes instruções:
-* clique em option;
-* desmarque a opção show toolbar and footer.
-
-Agora o prototipo pode ser usado normalmente
-
-link:
-https://www.figma.com/proto/Y5rwXVTXwnnEvEC3mY7Syf/Adotei-v2?node-id=5%3A8&scaling=min-zoom
