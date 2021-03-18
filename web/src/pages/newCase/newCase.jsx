@@ -47,6 +47,7 @@ export default function NewCase() {
 
     const data = {
       name,
+      especie,
       foto,
       porte,
       sobre,

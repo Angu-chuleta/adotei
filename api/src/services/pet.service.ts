@@ -18,7 +18,13 @@ export class PetService extends BaseService<IPetModel> {
     let users = await userService.getAll();
     let pets = res.map((pet: any) => {
       let user = users.find((u) => u._id.toString() === pet.userId);
-      pet.pix = user?.bank_information.pix_key || '';
+      pet.user = {
+        name: user?.name,
+        email: user?.email,
+        telefone: user?.telefone,
+        uf: user?.uf,
+        cidade: user?.cidade,
+      };
       return pet;
     });
     return pets;

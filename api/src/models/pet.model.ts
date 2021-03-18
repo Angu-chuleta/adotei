@@ -2,13 +2,14 @@ import { Schema, model, Document } from 'mongoose';
 
 export interface IPetModel extends Document {
   name: string;
+  especie: string;
   foto: string;
   porte: string;
   sobre: string;
   idade: number;
   foiAdotado: boolean;
   userId: string;
-  pix: string;
+  user: any;
 }
 
 export const PetSchema = new Schema<IPetModel>({
@@ -40,8 +41,12 @@ export const PetSchema = new Schema<IPetModel>({
     type: String,
     required: true,
   },
-  pix: {
+  especie: {
     type: String,
+    required: false,
+  },
+  user: {
+    type: Object,
     required: false,
   },
 });
