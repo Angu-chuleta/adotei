@@ -51,17 +51,28 @@ export default function Home() {
                 <div className="card-reveal">
                   <h2 className="card-title orange-text text-darken-2">
                     {pet.name}
+
                     <i className="material-icons right">close</i>
                   </h2>
                   <h2 className=" card-title orange-text text-darken-2">
                     sobre:
                   </h2>
                   <p>{pet.sobre}</p>
+                  <p>
+                    {" "}
+                    {pet.idade === 1 ? (
+                      <p>Idade: {pet.idade} ano</p>
+                    ) : (
+                      <p>Idade: {pet.idade} anos</p>
+                    )}
+                  </p>
+                  <p>Porte: {pet.porte}</p>
                   <h2 className=" card-title orange-text text-darken-2">
                     Doe através do PIX:
                   </h2>
-                  <img width="256px" src={piximg} alt="pix" />
-                  <p>Basta escanear o código a cima.</p>
+                  Chave PIX: <br />
+                  {pet.pix}
+                  {/* <img width="256px" src={piximg} alt="pix" /> */}
                 </div>
               </div>
             ))}

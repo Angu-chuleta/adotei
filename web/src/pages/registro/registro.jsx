@@ -137,7 +137,6 @@ export default function RegisterUser() {
               className="validate"
               type="text"
               id="username"
-              placeholder="joaosilva123"
               value={username}
               onChange={(e) => setUsename(e.target.value)}
             />
@@ -161,7 +160,6 @@ export default function RegisterUser() {
               required
               id="senha"
               className="validate"
-              placeholder="*****"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -182,7 +180,6 @@ export default function RegisterUser() {
               type="text"
               id="cidade"
               className="validate"
-              placeholder="São Paulo"
               value={cidade}
               onChange={(e) => setCidade(e.target.value)}
             />
@@ -203,7 +200,6 @@ export default function RegisterUser() {
               id="uf"
               className="validate"
               pattern="[A-Z]{2}"
-              placeholder="SP"
               value={uf}
               onChange={(e) => setUf(e.target.value)}
             />
@@ -222,7 +218,6 @@ export default function RegisterUser() {
               type="text"
               id="pix"
               className="validate"
-              placeholder="Chave Pix"
               value={pix}
               onChange={(e) => setPix(e.target.value)}
             />
@@ -240,7 +235,6 @@ export default function RegisterUser() {
             <input
               id="email"
               className="validate"
-              placeholder="joaosilva@gmail.com"
               type="email"
               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
               required
@@ -289,7 +283,6 @@ export default function RegisterUser() {
               required
               className="validate"
               pattern="[0-9]{12,}"
-              placeholder="99999999999"
               value={telefone}
               onChange={(e) => setTelefone(e.target.value)}
             /> */}
@@ -300,7 +293,6 @@ export default function RegisterUser() {
               id="about"
               required
               className="validate"
-              placeholder="Eu sou..."
               type="text"
               value={sobre}
               onChange={(e) => setSobre(e.target.value)}
@@ -353,12 +345,6 @@ export default function RegisterUser() {
                     <div key={index} className="image-item">
                       <img src={image["data_url"]} alt="" width="100" />
                       <div className="image-item__btn-wrapper">
-                        {/* <button
-                          className="waves-effect waves-light btn"
-                          onClick={() => onImageUpdate(index)}
-                        >
-                          Update
-                        </button> */}
                         <button
                           className="waves-effect waves-light btn"
                           onClick={() => onImageRemove(index)}
@@ -390,23 +376,4 @@ export default function RegisterUser() {
       </div>
     </div>
   );
-
-  /*
-                        <div className="input-group">
-                        <input placeholder="Endereço"
-                     value={adress}
-                     onChange={e => setAdress(e.target.value)}                         
-                        />
-                        <input placeholder="Cidade"
-                    value={city}
-                    onChange={e => setCity(e.target.value)}                          
-                        />
-                        <input placeholder="UF" style={{whidth:80}}
-                    value={state}
-                    onChange={e => setstate(e.target.value)}                          
-                        />
-                    </div>
-    
-    
-    */
 }

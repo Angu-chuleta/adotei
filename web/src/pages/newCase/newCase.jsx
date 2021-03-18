@@ -17,6 +17,7 @@ export default function NewCase() {
   const [idade, setIdade] = useState(0);
   const [sobre, setSobre] = useState("");
   const [porte, setPorte] = useState("");
+  const [especie, setEspecie] = useState("");
   const foiAdotado = false;
   const onChangeImage = (imageList, addUpdateIndex) => {
     if (imageList[0] !== undefined) {
@@ -95,21 +96,48 @@ export default function NewCase() {
                 id="nome"
                 required
                 className="validate"
-                placeholder="Doguinho"
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
-              <label for="nome">Nome do animal</label>
-              {name === "" && formErro ? (
-                <span id="erro">Nome é obrigatório</span>
-              ) : (
-                <span></span>
-              )}
+              <label for="nome">
+                Nome do animal{" "}
+                {name === "" && formErro ? (
+                  <span id="erro">Nome é obrigatório</span>
+                ) : (
+                  <span></span>
+                )}
+              </label>
+            </div>
+
+            <div class="input-field">
+              <input
+                id="especie"
+                required
+                className="validate"
+                type="text"
+                value={especie}
+                onChange={(e) => setEspecie(e.target.value)}
+              />
+              <label for="especie">
+                Especie do animal{" "}
+                {especie === "" && formErro ? (
+                  <span id="erro">Especie é obrigatório</span>
+                ) : (
+                  <span></span>
+                )}
+              </label>
             </div>
             <div class="input-field">
               <br />
-              <label>Porte do animal</label>
+              <label>
+                Porte do animal{" "}
+                {porte === "" && formErro ? (
+                  <span id="erro">Escolha o porte do animal</span>
+                ) : (
+                  <span></span>
+                )}
+              </label>
 
               <br />
               <p>
@@ -146,13 +174,7 @@ export default function NewCase() {
                 </label>
               </p>
             </div>
-            <div>
-              {porte === "" && formErro ? (
-                <span id="erro">Escolha o porte do animal</span>
-              ) : (
-                <span></span>
-              )}
-            </div>
+            <div></div>
             <br />
             <div class="input-field">
               <p className="range-field">
@@ -171,23 +193,23 @@ export default function NewCase() {
               </p>
             </div>
             <div class="input-field">
-              <label for="msg">Descrição</label>
+              <label for="msg">
+                Descrição{" "}
+                {sobre === "" && formErro ? (
+                  <span id="erro">Descrição é obrigatório</span>
+                ) : (
+                  <span></span>
+                )}
+              </label>
               <textarea
                 required
-                placeholder="Esse animal é lindo..."
                 id="msg"
                 type="text"
                 value={sobre}
                 onChange={(e) => setSobre(e.target.value)}
               />
             </div>
-            <div>
-              {sobre === "" && formErro ? (
-                <span id="erro">Descrição é obrigatório</span>
-              ) : (
-                <span></span>
-              )}
-            </div>
+            <div></div>
 
             {imagesvalida ? (
               <span></span>
@@ -240,11 +262,6 @@ export default function NewCase() {
               )}
             </div>
             <br />
-            {!formErro ? (
-              <span></span>
-            ) : (
-              <span id="erro">Preencha todos os campos</span>
-            )}
             {loadbtn ? (
               <div className="progress">
                 <div className="indeterminate"></div>
