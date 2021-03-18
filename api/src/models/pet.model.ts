@@ -8,6 +8,7 @@ export interface IPetModel extends Document {
   idade: number;
   foiAdotado: boolean;
   userId: string;
+  pix: string;
 }
 
 export const PetSchema = new Schema<IPetModel>({
@@ -38,6 +39,10 @@ export const PetSchema = new Schema<IPetModel>({
   userId: {
     type: String,
     required: true,
+  },
+  pix: {
+    type: String,
+    required: false,
   },
 });
 

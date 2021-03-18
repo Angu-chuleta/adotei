@@ -1,3 +1,4 @@
+import { userService } from '.';
 import { PetModel, IPetModel } from '../models';
 import { BaseService } from './base.service';
 
@@ -10,5 +11,16 @@ export class PetService extends BaseService<IPetModel> {
     return this.BaseModel.find({
       userId,
     }).exec();
+  }
+
+  async getAll(): Promise<any[]> {
+    const res = await this.BaseModel.find();
+    let users = await userService.getAll();
+    let pets = res.map((pet: any) => {
+      let user = users.find((u) => u._id.toString() === pet.userId);
+      pet.pix = user?.bank_information.pix_key || '';
+      return pet;
+    });
+    return pets;
   }
 }
