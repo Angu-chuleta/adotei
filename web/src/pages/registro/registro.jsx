@@ -46,11 +46,13 @@ export default function RegisterUser() {
   };
 
   const confereDados = () => {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
     return (
       username != "" &&
       password != "" &&
       name != "" &&
-      email != "" &&
+      re.test(String(email).toLowerCase()) &&
       telefone != "" &&
       sobre != "" &&
       uf != "" &&
