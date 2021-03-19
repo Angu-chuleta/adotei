@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import auth from './auth';
 import pet from './pet';
-import user from './user';
+import user from './ong';
 import utilsRoutes from './utils.routes';
 
 const routes = Router();

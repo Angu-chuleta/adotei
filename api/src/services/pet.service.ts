@@ -24,6 +24,7 @@ export class PetService extends BaseService<IPetModel> {
         telefone: user?.telefone,
         uf: user?.uf,
         cidade: user?.cidade,
+        pix: user?.bank_information.pix_key
       };
       return pet;
     });

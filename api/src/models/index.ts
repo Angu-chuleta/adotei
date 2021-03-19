@@ -1,6 +1,6 @@
 import { IBaseModel } from './base.model';
 import PetModel, { IPetModel } from './pet.model';
-import UserModel, { IUserModel } from './user.model';
+import UserModel, { IUserModel } from './ong.model';
 
 export {
   PetModel,

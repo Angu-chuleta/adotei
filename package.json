@@ -32,11 +32,5 @@
     "web/src/**/*.{js,jsx}": [
       "./web/node_modules/.bin/eslint -c ./web/.eslintrc.json --fix "
     ]
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
-    }
   }
 }

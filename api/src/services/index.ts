@@ -1,6 +1,6 @@
 import { AuthService } from './auth.service';
 import { PetService } from './pet.service';
-import { UserService } from './user.service';
+import { UserService } from './ong.service';
 
 const petService = new PetService();
 const userService = new UserService();

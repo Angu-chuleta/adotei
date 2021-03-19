@@ -1,7 +1,7 @@
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
 import { authConfig } from '../config';
-import { UserService } from './user.service';
+import { UserService } from './ong.service';
 
 const userService = new UserService();
 
