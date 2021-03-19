@@ -14,8 +14,9 @@ export default function Home() {
     apiService
       .get("pet")
       .then((response) => {
-        setPets(response.data);
-        setSpets(response.data);
+        let reverse = response.data.reverse();
+        setPets(reverse);
+        setSpets(reverse);
         setload(false);
       })
       .catch((e) => {
@@ -33,7 +34,8 @@ export default function Home() {
           p.user?.name.toLowerCase().includes(query) ||
           p.user?.cidade.toLowerCase().includes(query) ||
           p.user?.uf.toLowerCase().includes(query) ||
-          p.porte.toLowerCase().includes(query)
+          p.porte.toLowerCase().includes(query) ||
+          p.especie.toLowerCase().includes(query)
       )
     );
   }
@@ -103,7 +105,8 @@ export default function Home() {
                     </div>
                     <div className="col s4">
                       <a className="activator waves-effect waves-light btn">
-                        Ver mais<i class="material-icons left">expand_less</i>
+                        Ver mais
+                        <i className="material-icons left">expand_less</i>
                       </a>
                     </div>
                   </div>
@@ -124,7 +127,7 @@ export default function Home() {
                     )}
                   </p>
                   <p>Porte: {pet.porte}</p>
-                  {/* <p>Porte: {pet.especie}</p> */}
+                  <p>Especie: {pet.especie}</p>
                   <h2 className=" card-title orange-text text-darken-2">
                     Doe através do PIX:
                   </h2>

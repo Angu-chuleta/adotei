@@ -49,16 +49,15 @@ export default function ProfileOng() {
         </div>
       ) : (
         <div className="row">
-          <div className="col s12">
-            <div className="col s6 m3 l2 offset-l3 offset-m3">
-              <span>Bem vindo, Usuário</span>
-              <Link className="button btn waves-effect waves-light " to="/new">
+          <div className="box col s12 m8 offset-m2 l6 offset-l3 xl4 offset-xl4">
+            <div className="col s12">
+              <h3>Bem vindo</h3>
+              <Link className=" button btn waves-effect waves-light " to="/new">
                 Cadastrar novo caso
               </Link>
               <h6>Casos {pets.length} cadastrados</h6>
             </div>
           </div>
-
           <ul className="box col s12 m8 offset-m2 l6 offset-l3 xl4 offset-xl4">
             {pets.map((pet) => (
               <div key={pet._id} className="card border-radius z-depth-4">
@@ -99,7 +98,8 @@ export default function ProfileOng() {
                     </div>
                     <div className="col s4">
                       <a className="activator waves-effect waves-light btn">
-                        Ver mais<i class="material-icons left">expand_less</i>
+                        Ver mais
+                        <i className="material-icons left">expand_less</i>
                       </a>
                     </div>
                   </div>
