@@ -15,9 +15,18 @@ class PetController extends BaseController<IPetModel, PetService> {
         'idade',
         'foiAdotado',
         'userId',
+        'especie',
       ],
       // keys do req.body que serão usados no update
-      update: ['name', 'foto', 'porte', 'sobre', 'idade', 'foiAdotado'],
+      update: [
+        'name',
+        'foto',
+        'porte',
+        'sobre',
+        'idade',
+        'foiAdotado',
+        'especie',
+      ],
     });
   }
 

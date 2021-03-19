@@ -84,7 +84,7 @@ export default function RegisterUser() {
         .post("user", data)
         .then((response) => {
           console.log("Cadastro realizado com sucesso", response.status);
-          history.push("/");
+          history.push("/login");
           setLoad(false);
         })
         .catch((err) => {
@@ -115,7 +115,6 @@ export default function RegisterUser() {
               className="validate"
               type="text"
               pattern="[A-Za-z]{*}"
-              placeholder="João Silva"
               value={name}
               id="fullName"
               onChange={(e) => setName(e.target.value)}
