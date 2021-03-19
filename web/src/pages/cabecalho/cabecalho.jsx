@@ -5,7 +5,7 @@ import "./cabecalho.css";
 
 export default function Cabecalho() {
   const [nome, setNome] = React.useState("");
-  const [role, setRole] = React.useState(1);
+  const [search, setSearch] = React.useState(false);
   const [width, setwidth] = React.useState(window.innerWidth);
 
   const history = useHistory();
@@ -16,7 +16,6 @@ export default function Cabecalho() {
       //history.push("/");
     } else {
       setNome(saved.user.name);
-      setRole(saved.role);
     }
     const updateWidth = () => {
       setwidth(window.innerWidth);
