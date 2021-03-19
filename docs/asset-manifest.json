@@ -1,20 +1,22 @@
 {
   "files": {
-    "main.css": "/adotei/static/css/main.83bbe7d6.chunk.css",
-    "main.js": "/adotei/static/js/main.e7e6b4e7.chunk.js",
-    "main.js.map": "/adotei/static/js/main.e7e6b4e7.chunk.js.map",
+    "main.css": "/adotei/static/css/main.5b2b1b82.chunk.css",
+    "main.js": "/adotei/static/js/main.9da42273.chunk.js",
+    "main.js.map": "/adotei/static/js/main.9da42273.chunk.js.map",
     "runtime-main.js": "/adotei/static/js/runtime-main.9f4862ff.js",
     "runtime-main.js.map": "/adotei/static/js/runtime-main.9f4862ff.js.map",
-    "static/js/2.b5c3ec1b.chunk.js": "/adotei/static/js/2.b5c3ec1b.chunk.js",
-    "static/js/2.b5c3ec1b.chunk.js.map": "/adotei/static/js/2.b5c3ec1b.chunk.js.map",
+    "static/js/2.8a901f9d.chunk.js": "/adotei/static/js/2.8a901f9d.chunk.js",
+    "static/js/2.8a901f9d.chunk.js.map": "/adotei/static/js/2.8a901f9d.chunk.js.map",
     "index.html": "/adotei/index.html",
-    "static/css/main.83bbe7d6.chunk.css.map": "/adotei/static/css/main.83bbe7d6.chunk.css.map",
-    "static/js/2.b5c3ec1b.chunk.js.LICENSE.txt": "/adotei/static/js/2.b5c3ec1b.chunk.js.LICENSE.txt"
+    "static/css/main.5b2b1b82.chunk.css.map": "/adotei/static/css/main.5b2b1b82.chunk.css.map",
+    "static/js/2.8a901f9d.chunk.js.LICENSE.txt": "/adotei/static/js/2.8a901f9d.chunk.js.LICENSE.txt",
+    "static/media/logodotei.82f07902.svg": "/adotei/static/media/logodotei.82f07902.svg",
+    "static/media/logosquad.9317a1fd.svg": "/adotei/static/media/logosquad.9317a1fd.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.9f4862ff.js",
-    "static/js/2.b5c3ec1b.chunk.js",
-    "static/css/main.83bbe7d6.chunk.css",
-    "static/js/main.e7e6b4e7.chunk.js"
+    "static/js/2.8a901f9d.chunk.js",
+    "static/css/main.5b2b1b82.chunk.css",
+    "static/js/main.9da42273.chunk.js"
   ]
 }
