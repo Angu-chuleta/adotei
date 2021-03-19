@@ -47,8 +47,8 @@ export default function NewCase() {
 
     const data = {
       name,
-      especie,
       foto,
+      especie,
       porte,
       sobre,
       idade,
@@ -56,7 +56,11 @@ export default function NewCase() {
       userId: saved.user._id,
     };
 
-    if (!(name != "" && porte != "" && sobre != "" && foto != "")) {
+    console.log(data);
+
+    if (
+      !(name != "" && porte != "" && sobre != "" && foto != "" && foto != "")
+    ) {
       setFormErro(true);
     } else {
       setFormErro(false);

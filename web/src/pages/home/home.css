@@ -1,8 +1,31 @@
+#disponivel {
+  border-radius: 30px;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  background-color: #2e883b;
+  width: 100px;
+}
+#indisponivel {
+  border-radius: 30px;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  background-color: #727272;
+  width: 100px;
+}
+#search {
+  margin-top: 5px !important;
+  border-radius: 8px !important;
+}
+.btn {
+  border-radius: 8px;
+}
 #sobre {
   color: #f2a365;
 }
-#card {
-  background-color: #222831;
+.border-radius {
+  border-radius: 8px !important;
 }
 .card-content {
   background-color: #e7ecf1;

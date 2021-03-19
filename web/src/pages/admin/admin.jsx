@@ -49,55 +49,80 @@ export default function ProfileOng() {
         </div>
       ) : (
         <div className="row">
-          <div className="col s12">
-            <div className="col s6 m3 l2 offset-l3 offset-m3">
-              <span>Bem vindo, Usuário</span>
-              <Link className="button btn waves-effect waves-light " to="/new">
+          <div className="box col s12 m8 offset-m2 l6 offset-l3 xl4 offset-xl4">
+            <div className="col s12">
+              <h3>Bem vindo</h3>
+              <Link className=" button btn waves-effect waves-light " to="/new">
                 Cadastrar novo caso
               </Link>
               <h6>Casos {pets.length} cadastrados</h6>
             </div>
           </div>
-
           <ul className="box col s12 m8 offset-m2 l6 offset-l3 xl4 offset-xl4">
             {pets.map((pet) => (
-              <li key={pet._id}>
-                <div className="card z-depth-2">
-                  <div className="z-depth-2 card-image waves-effect waves-block waves-light">
-                    <div
-                      onClick={() => hundleDeleteCase(pet)}
-                      className="btnlixo col s1 offset-s10"
-                    >
-                      {loadbtn ? (
-                        <div className="progress">
-                          <div className="indeterminate"></div>
-                        </div>
+              <div key={pet._id} className="card border-radius z-depth-4">
+                <div className="border-radius card-image waves-effect waves-block waves-light">
+                  <div
+                    onClick={() => hundleDeleteCase(pet)}
+                    className="btnlixo col s1 offset-s10"
+                  >
+                    {loadbtn ? (
+                      <div className="progress">
+                        <div className="indeterminate"></div>
+                      </div>
+                    ) : (
+                      <FiTrash2 size={32} color="#f2a365" />
+                    )}
+                  </div>
+                  <img
+                    className="activator fotos"
+                    src={pet.foto}
+                    alt={pet.name}
+                  ></img>
+                </div>
+                <div className="card-content border-radius">
+                  <div className="row">
+                    <div className="col s8">
+                      <p className=" card-title activator orange-text text-darken-2">
+                        {pet.name}
+                      </p>
+                      {!pet.foiAdotado ? (
+                        <p id="disponivel" className="activator">
+                          Para adoção
+                        </p>
                       ) : (
-                        <FiTrash2 size={32} color="#f2a365" />
+                        <p id="indisponivel" className="activator">
+                          Adotado
+                        </p>
                       )}
                     </div>
-
-                    <img
-                      className="fotos activator"
-                      src={pet.foto}
-                      alt={pet.name}
-                    ></img>
-                  </div>
-                  <div className="card-content">
-                    <span className="card-title activator orange-text text-darken-2">
-                      {pet.name}
-                    </span>
-                    Carinho
-                  </div>
-                  <div className="card-reveal">
-                    <span className="card-title orange-text text-darken-2">
-                      {pet.name}
-                      <i className="material-icons right">close</i>
-                    </span>
-                    <p>{pet.sobre}</p>
+                    <div className="col s4">
+                      <a className="activator waves-effect waves-light btn">
+                        Ver mais
+                        <i className="material-icons left">expand_less</i>
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </li>
+                <div className="card-reveal">
+                  <h2 className="card-title orange-text text-darken-2">
+                    {pet.name} <i className="material-icons right">close</i>
+                  </h2>
+                  <h2 className=" card-title orange-text text-darken-2">
+                    sobre:
+                  </h2>{" "}
+                  <p>{pet.sobre}</p>
+                  <p>
+                    {pet.idade === 1 ? (
+                      <p>Idade: {pet.idade} ano</p>
+                    ) : (
+                      <p>Idade: {pet.idade} anos</p>
+                    )}
+                  </p>
+                  <p>Porte: {pet.porte}</p>
+                  {/* <p>Especie: {pet.especie}</p> */}
+                </div>
+              </div>
             ))}
           </ul>
         </div>

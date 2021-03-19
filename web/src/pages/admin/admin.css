@@ -32,14 +32,11 @@
   height: 32px;
   margin-top: 10px;
   position: absolute;
+  border-radius: 5px 5px 5px 5px;
 }
 .btnlixo :hover {
-  width: 32px;
-  height: 32px;
-  border-radius: 5px 5px 5px 5px;
-  background-color: #30475e;
-  margin-top: 10px;
-  position: absolute;
+  width: 34px;
+  height: 34px;
 }
 
 .profileUser-container h1 {
