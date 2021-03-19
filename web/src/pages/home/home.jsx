@@ -30,9 +30,9 @@ export default function Home() {
       spets.filter(
         (p) =>
           p.name.toLowerCase().includes(query) ||
-          p.sobre.toLowerCase().includes(query) ||
           p.user?.name.toLowerCase().includes(query) ||
           p.user?.cidade.toLowerCase().includes(query) ||
+          p.user?.uf.toLowerCase().includes(query) ||
           p.porte.toLowerCase().includes(query)
       )
     );
@@ -124,6 +124,7 @@ export default function Home() {
                     )}
                   </p>
                   <p>Porte: {pet.porte}</p>
+                  {/* <p>Porte: {pet.especie}</p> */}
                   <h2 className=" card-title orange-text text-darken-2">
                     Doe através do PIX:
                   </h2>
