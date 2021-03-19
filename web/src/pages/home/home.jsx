@@ -7,7 +7,6 @@ export default function Home() {
   const [pets, setPets] = useState([]);
   const [spets, setSpets] = useState([]);
   const [load, setload] = useState("");
-  const [search, setSearch] = React.useState(false);
 
   useEffect(() => {
     setload(true);
@@ -26,13 +25,15 @@ export default function Home() {
   }, []);
 
   function buscaPet(query) {
-    console.log(query);
+    query = query.toLowerCase();
     setPets(
       spets.filter(
         (p) =>
-          p.name.includes(query.value) ||
-          p.sobre.includes(query.value) ||
-          p.tamanho === query.value
+          p.name.toLowerCase().includes(query) ||
+          p.sobre.toLowerCase().includes(query) ||
+          p.user?.name.toLowerCase().includes(query) ||
+          p.user?.cidade.toLowerCase().includes(query) ||
+          p.porte.toLowerCase().includes(query)
       )
     );
   }
@@ -44,31 +45,23 @@ export default function Home() {
       <div id="search" className="row">
         <div className="col s4 offset-s4">
           <nav>
-            <div class="nav-wrapper">
+            <div className="nav-wrapper">
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
                 }}
               >
-                <div class="input-field">
+                <div className="input-field">
                   <input
                     id="search"
                     type="search"
-                    onChange={(e) => buscaPet(e)}
+                    onChange={(e) => buscaPet(e.target.value)}
                   ></input>
-                  <label class="label-icon" for="search">
-                    <i id="menuitem" class="material-icons">
+                  <label className="label-icon" for="search">
+                    <i id="menuitem" className="material-icons">
                       search
                     </i>
                   </label>
-                  <i
-                    id="menuitem"
-                    onClick={() => setSearch(!search)}
-                    onBlur={() => setSearch(!search)}
-                    class="material-icons"
-                  >
-                    close
-                  </i>
                 </div>
               </form>
             </div>
