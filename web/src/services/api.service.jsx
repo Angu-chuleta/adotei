@@ -9,11 +9,10 @@ const apiService = () => {
       const store = localStorage.getItem("adotei@token");
       if (store) {
         let token = JSON.parse(store).token;
-        //console.log(">>>>>", token);
-        //config.headers["Authorization"] = `${store.token}`;
-        config.headers = { auth: token };
+        config.headers["Authorization"] = `${store.token}`;
+//         config.headers = { auth: token };
       }
-      // config.headers['Content-Type'] = 'application/json';
+//       config.headers['Content-Type'] = 'application/json';
       return config;
     },
     (error) => {
