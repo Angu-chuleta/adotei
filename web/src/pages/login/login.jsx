@@ -63,36 +63,25 @@ export default function Login() {
         <section className="form col s8 offset-s2">
           <form onSubmit={handleLogin}>
             <h3 id="bemvindo">Bem vindo!</h3>
-            <h5 id="textologin">faça seu login:</h5>
+            <h5 id="textologin">Faça seu login:</h5>
             {UserPass ? (
-              <span id="erro">Usuário ou Senha incorreto</span>
+              <span id="erro">Usuário e/ou Senha incorreto</span>
             ) : (
               <p></p>
             )}
-            <div class="input-field">
-              <input
-                required
-                type="text"
-                className="validate"
-                id="username"
-                placeholder="Login"
-                value={username}
-                onChange={(e) => setLogin(e.target.value)}
-              ></input>{" "}
-              <label for="username">Usuário</label>
+
+            <div class="input-field col s12">
+              <input required id="username" type="text" class="validate" value={username} onChange={(e) => setLogin(e.target.value)}></input>{" "}
+              <label for="username">Username</label>
             </div>
-            <div class="input-field">
-              <input
-                required
-                id="pass"
-                className="validate"
-                placeholder="Senha"
-                type="password"
-                value={password}
-                onChange={(e) => setSenha(e.target.value)}
-              ></input>
+
+
+            <div class="input-field col s12">
+              <input required id="pass" type="password" class="validate" value={password}
+              onChange={(e) => setSenha(e.target.value)}></input>
               <label for="pass">Senha</label>
             </div>
+
             {!load ? (
               <button
                 className={"button btn waves-effect waves-light"}
